@@ -1,45 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-
-:root{
-  --color-yellow: #f9c74f;
-  --color-purple: #4C3A51;
-}
-
-*>*{
-  font-family: 'Rubik', sans-serif;
-  margin: 0;
-  padding: 0;
-}
 .App {
   text-align: center;
-  padding: 4em 0;
 }
 
-.bg-yellow{
-  background-color: var(--color-yellow);
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.bg-purple{
-  background-color: var(--color-purple);
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.chart .title{
-  position: absolute;
-  left:0;
-  right:0;
-  top:40%;
-  margin-left: auto;
-  margin-right: auto;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.form-input{
-  @apply mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm
+.App-link {
+  color: #61dafb;
 }
 
-.btn-blue{
-  background-color: #4C3A51;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
