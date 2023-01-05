@@ -1,0 +1,138 @@
+.outservices_maincontainer {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(26, 41, 64, 0) 100%
+  );
+}
+
+.ourServices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.ourServices_heading {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 64px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.ourServices_services {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.services_box {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.service_name {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+  margin-top: 15px;
+}
+
+.services_bottom {
+  margin-top: 60px;
+  background: #1a2940;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  position: relative;
+  padding: 25px 60px 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.services_bottom_heading {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  text-align: center;
+  color: #f79d2b;
+  text-shadow: 0px 15px 26px rgba(0, 0, 0, 0.25);
+}
+
+@media only screen and (max-width: 1200px) {
+  .services_bottom {
+    padding: 20px 30px 0 30px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .services_box {
+    width: 50%;
+  }
+
+  .services_bottom_image img {
+    height: 140px;
+    width: 500px;
+  }
+  .services_bottom_heading {
+    font-size: 40px;
+    line-height: 46px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .services_box {
+    width: 100%;
+  }
+
+  .ourServices_heading {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 30px;
+  }
+
+  .services_image img {
+    height: 166px;
+    width: 161px;
+  }
+
+  .service_name {
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 8px;
+  }
+
+  .services_bottom_image img {
+    height: 80px;
+    width: 280px;
+  }
+  .services_bottom {
+    margin-top: 20px;
+  }
+  .services_bottom_heading {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .services_bottom {
+    padding: 20px 15px 0 15px;
+    margin: 0 10px;
+  }
+}
