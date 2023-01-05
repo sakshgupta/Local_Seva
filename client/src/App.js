@@ -1,5 +1,12 @@
+import Homepage from "./Folders/Homepage/Homepage";
+import "./index.css";
+
 function App() {
-  return <h1>LOCAL HANDYMAN</h1>;
+  return (
+    <>
+      <Homepage />
+    </>
+  );
 }
 
 export default App;
