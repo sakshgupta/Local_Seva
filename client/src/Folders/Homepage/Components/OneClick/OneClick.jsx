@@ -11,7 +11,7 @@ function OneClick() {
       <div className="container oneclick">
         <div className="oneclick_heading">One Click can solve your problem</div>
         <div className="oneclick_boxes_container">
-          <div className="oneclick_boxes">
+          <div className="oneclick_boxes" style={{ background: "#ffb01b" }}>
             <a href="#">
               <div
                 className="oneclick_boxes_button"
@@ -24,7 +24,7 @@ function OneClick() {
               <img src={oneclick_1} alt="" />
             </div>
           </div>
-          <div className="oneclick_boxes">
+          <div className="oneclick_boxes" style={{ background: "#002276" }}>
             <a href="#">
               <div
                 className="oneclick_boxes_button"
@@ -37,7 +37,7 @@ function OneClick() {
               <img src={oneclick_2} alt="" />
             </div>
           </div>
-          <div className="oneclick_boxes">
+          <div className="oneclick_boxes" style={{ background: "#fc3e3e" }}>
             <a href="#">
               <div
                 className="oneclick_boxes_button"
@@ -50,7 +50,7 @@ function OneClick() {
               <img src={oneclick_3} alt="" />
             </div>
           </div>
-          <div className="oneclick_boxes">
+          <div className="oneclick_boxes" style={{ background: "#bc8948" }}>
             <a href="#">
               <div
                 className="oneclick_boxes_button"
