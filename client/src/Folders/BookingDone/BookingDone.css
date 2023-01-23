@@ -1,0 +1,328 @@
+.bookingdone_uppercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  height: 90px;
+  padding: 0 20px;
+}
+
+.bookingdone_heading {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.cancel_booking button {
+  background: rgba(26, 41, 64, 0.42);
+  border-radius: 5px;
+  border: none;
+  padding: 10px 40px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.booking_middle_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.booking_summary {
+  flex: 0.68;
+  background: #fcfcfc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking_summary_heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.booking_summary_heading span {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 10px;
+  text-align: center;
+  color: #086706;
+  margin-left: 5px;
+}
+
+.booking_summary_info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-left: -10px;
+}
+
+.booking_summary_info_info {
+  margin-left: 8px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.booking_summary_time {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.booking_summary_time span {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.booking_payment {
+  flex: 0.3;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.payment_summary_heading {
+  width: 100%;
+  padding: 25px 0;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 10px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.payment_summary_bill {
+  padding: 0 20px 30px 20px;
+  margin-top: 20px;
+  border-bottom: 1px solid #dedede;
+}
+
+.payment_bill_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  margin-top: 30px;
+}
+
+.payment_summary_total_amount {
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.payment_summary_total_amount .payment_bill_total {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000000;
+}
+
+.payment_paynow {
+  margin: 20px 10px;
+}
+
+.payment_paynow button {
+  width: 100%;
+  background: #f79d2b;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.booking_third_container,
+.booking_end_container {
+  margin: 20px 0 0 30px;
+  padding: 30px 30px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  width: 866px;
+}
+
+.bookingend_heading {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: #086706;
+}
+
+.bookingend_text {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.booking_end_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking_end_contact button {
+  background: rgba(26, 41, 64, 0.42);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+}
+
+.booking_end_contact button span {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .booking_third_container,
+  .booking_end_container {
+    width: 743px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .booking_third_container,
+  .booking_end_container {
+    width: 621px;
+  }
+
+  .booking_end_contact button {
+    padding: 10px 15px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .booking_middle_container {
+    flex-direction: column;
+    padding: 0;
+  }
+  .booking_summary {
+    margin-bottom: 20px;
+  }
+
+  .booking_end_container,
+  .booking_third_container {
+    width: inherit;
+    margin: 10px 0;
+    padding: 20px 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .booking_end_container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .booking_end_contact {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .bookingdone_heading,
+  .booking_summary_heading span,
+  .payment_summary_heading,
+  .payment_paynow button {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .cancel_booking button,
+  .payment_bill_total {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .booking_summary_info_info,
+  .booking_summary_time,
+  .bookingend_text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .booking_summary_time span,
+  .bookingend_heading {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .cancel_booking button {
+    padding: 10px 20px;
+  }
+
+  .bookingdone_uppercontainer {
+    padding: 10px 10px;
+  }
+
+  .booking_summary {
+    padding: 20px 20px;
+  }
+}
