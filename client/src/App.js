@@ -1,6 +1,7 @@
 import BookingDone from "./Folders/BookingDone/BookingDone";
 import Homepage from "./Folders/Homepage/Homepage";
 import LogIn from "./Folders/Register/LogIn";
+import Signup from "./Folders/Register/Signup";
 import "./index.css";
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <>
       {/* <Homepage /> */}
       {/* <BookingDone /> */}
-      <LogIn />
+      {/* <LogIn /> */}
+      {/* <Signup /> */}
     </>
   );
 }
