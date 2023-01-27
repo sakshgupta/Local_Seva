@@ -1,0 +1,125 @@
+.service_page_main {
+  background: url("./images/services_background.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.services_provided_container {
+  display: flex;
+  flex-direction: column;
+  background: #1a2940;
+  border-radius: 30px;
+  width: 75%;
+  padding: 30px 40px;
+}
+
+.services_provided_duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #a9a9a9;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.services_provided_duration button {
+  background: #f79d2b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 10px 35px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.services_search input {
+  background: #efefef;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 20px 22px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.services_search input::placeholder {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.services_provided_container p {
+  margin-bottom: 5px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #ffffff;
+}
+
+.individual_services {
+  display: flex;
+  align-items: center;
+  background: #fffefe;
+  border-radius: 12.5px;
+  padding: 10px 10px;
+}
+
+.individual_services_first {
+  flex: 0.14;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.individual_services_second {
+  flex: 0.84;
+}
+
+.individual_services_duration {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.individual_services_name {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.individual_services_info {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+}

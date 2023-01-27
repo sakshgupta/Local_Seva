@@ -8,4 +8,4 @@ const availableServices = [
   }
 ];
 
-export default availableServices
+export default availableServices;

@@ -1,3 +1,4 @@
+import ServicePage from "./Folders/AvailableServices/ServicePage";
 import BookingDone from "./Folders/BookingDone/BookingDone";
 import Footer from "./Folders/Global Components/Footer/Footer";
 import Homepage from "./Folders/Homepage/Homepage";
@@ -9,12 +10,13 @@ import "./index.css";
 function App() {
   return (
     <>
-      <Homepage />
+      {/* <Homepage /> */}
       {/* <BookingDone /> */}
       {/* <LogIn /> */}
       {/* <Signup /> */}
       {/* <WhyPartner /> */}
-      <Footer />
+      {/* <Footer /> */}
+      <ServicePage />
     </>
   );
 }
