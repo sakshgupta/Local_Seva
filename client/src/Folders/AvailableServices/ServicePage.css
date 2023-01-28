@@ -123,3 +123,19 @@
   line-height: 22px;
   color: #000000;
 }
+
+@media only screen and (max-width: 992px) {
+  .services_provided_container {
+    width: 90%;
+    padding: 20px 20px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .services_provided_container {
+    width: 100%;
+  }
+
+  .service_page_main {
+    padding-left: 0px;
+  }
+}
