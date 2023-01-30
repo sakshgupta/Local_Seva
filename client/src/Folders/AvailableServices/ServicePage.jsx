@@ -10,7 +10,7 @@ function ServicePage() {
         key={serviceDetails.id}
         serviceName={serviceDetails.serviceName}
         serviceInfo={serviceDetails.serviceInfo}
-        // serviceImage={serviceDetails.serviceImage}
+        serviceImage={serviceDetails.serviceImage}
         serviceTime={serviceDetails.serviceTime}
       />
     );
