@@ -1,7 +1,7 @@
 import React from "react";
 import "./ServicePage.css";
 import IndividualServices from "./IndividualServices";
-import availableServices from "./AvailableServices";
+import availableServices from "../../utils/AvailableServices";
 
 function ServicePage() {
   function servicesIndividual(serviceDetails) {

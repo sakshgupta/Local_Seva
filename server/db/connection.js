@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
+
+mongoose.set("strictQuery", false);
 
 const conn = mongoose.connect(process.env.ATLAS_URI)
     .then(db => {

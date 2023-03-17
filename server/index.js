@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const path = require('path');
+const bodyParser = require("body-parser");
 
-require('dotenv').config({ path: "./config.env" });
+require('dotenv').config();
 const port = process.env.PORT || 5000;
 
 // use middlewares
@@ -14,21 +14,22 @@ app.use(express.json());
 const con = require('./db/connection');
 
 // Using Routes
-app.use(require('./routes/route'));
+// app.use(require('./routes/route'));
+app.use("/api/user", require("./routes/authRoutes"));
 
 if (process.env.NODE_ENV == 'production') {
     // app.use(express.static(path.join(__dirname, '../client/build')));
 
     // app.get('/', function(req, res){
-    //     res.sendFile('D: /Study/My Projects/MERN Expense Tracker/client/build/index.html');
+    //     res.sendFile(__dirname, '../client/build/index.html');
     // });
     app.get('/', function (req, res) {
-        res.send('API running');
+        res.send('API running :)');
     });
 }
 else {
     app.get('/', function (req, res) {
-        res.send('API running');
+        res.send('API running :)');
     });
 }
 

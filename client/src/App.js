@@ -1,28 +1,49 @@
-import ServicePage from "./Folders/AvailableServices/ServicePage";
-import BookingDone from "./Folders/BookingDone/BookingDone";
-import Footer from "./Folders/Global Components/Footer/Footer";
-import Homepage from "./Folders/Homepage/Homepage";
-import LogIn from "./Folders/Register/LogIn";
-import Otp from "./Folders/Register/Otp";
-import Signup from "./Folders/Register/Signup";
-import WhyPartner from "./Folders/RegisterasProfessional/WhyPartner";
-import Maid from "./Folders/ServicePacks/Maid";
+import { Route, Routes } from "react-router-dom";
+import ServicePage from "./components/AvailableServices/ServicePage";
+import BookingDone from "./components/BookingDone/BookingDone";
+import Footer from "./components/Global Components/Footer/Footer";
+import Navbar from "./components/Global Components/Navbar/Navbar";
+import Homepage from "./components/Homepage/Homepage";
+import LogIn from "./components/Register/LogIn";
+import Otp from "./components/Register/Otp";
+import Signup from "./components/Register/Signup";
+import WhyPartner from "./components/RegisterasProfessional/WhyPartner";
+import Maid from "./components/ServicePacks/Maid";
 import "./index.css";
 
 function App() {
-  return (
-    <>
-      {/* <Homepage /> */}
-      {/* <BookingDone /> */}
-      {/* <LogIn /> */}
-      {/* <Signup /> */}
-      <Otp />
-      {/* <WhyPartner /> */}
-      {/* <Footer /> */}
-      {/* <ServicePage /> */}
-      {/* <Maid /> */}
-    </>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Navbar />} />
+            </Routes>
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/bookingsummary" element={<BookingDone />} />
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/otp" element={<Otp />} />
+                <Route
+                    path="/registerasprofessional"
+                    element={<WhyPartner />}
+                />
+            </Routes>
+            <Routes>
+                <Route path="/" element={<Footer />} />
+            </Routes>
+        </>
+        // <>
+        //   {/* <Homepage /> */}
+        //   {/* <BookingDone /> */}
+        //   {/* <LogIn /> */}
+        //   {/* <Signup /> */}
+        //   {/* <Otp /> */}
+        //   {/* <WhyPartner /> */}
+        //   {/* <Footer /> */}
+        //   <ServicePage />
+        //   {/* <Maid /> */}
+        // </>
+    );
 }
 
 export default App;
