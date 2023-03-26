@@ -8,42 +8,41 @@ import LogIn from "./components/Register/LogIn";
 import Otp from "./components/Register/Otp";
 import Signup from "./components/Register/Signup";
 import WhyPartner from "./components/RegisterasProfessional/WhyPartner";
-import Maid from "./components/ServicePacks/Maid";
+import Maid from "./components/ServicePacks/Maid/Maid";
 import "./index.css";
 
 function App() {
-    return (
-        <>
-            <Routes>
-                <Route path="/" element={<Navbar />} />
-            </Routes>
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/bookingsummary" element={<BookingDone />} />
-                <Route path="/login" element={<LogIn />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/otp" element={<Otp />} />
-                <Route
-                    path="/registerasprofessional"
-                    element={<WhyPartner />}
-                />
-            </Routes>
-            <Routes>
-                <Route path="/" element={<Footer />} />
-            </Routes>
-        </>
-        // <>
-        //   {/* <Homepage /> */}
-        //   {/* <BookingDone /> */}
-        //   {/* <LogIn /> */}
-        //   {/* <Signup /> */}
-        //   {/* <Otp /> */}
-        //   {/* <WhyPartner /> */}
-        //   {/* <Footer /> */}
-        //   <ServicePage />
-        //   {/* <Maid /> */}
-        // </>
-    );
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Navbar />} />
+      </Routes>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/bookingsummary" element={<BookingDone />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/otp" element={<Otp />} />
+        <Route path="/registerasprofessional" element={<WhyPartner />} />
+      </Routes>
+      <Routes>
+        <Route path="/" element={<Footer />} />
+      </Routes>
+    </>
+
+    //   {/* <Homepage /> */}
+    //   {/* <BookingDone /> */}
+    //   {/* <LogIn /> */}
+    //   {/* <Signup /> */}
+    //   {/* <Otp /> */}
+    //   {/* <WhyPartner /> */}
+    //   {/* <Footer /> */}
+    //   <ServicePage />
+
+    // <Maid />
+
+    // </>
+  );
 }
 
 export default App;
