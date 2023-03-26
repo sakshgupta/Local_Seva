@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -16,10 +16,10 @@ const Schema = mongoose.Schema;
 //     date: { type: Date, default: Date.now}
 // })
 
-// user => fields => ['user-token', 'username', 'email', 'contactNo', 'password']
+// user => fields => ['user_id', 'username', 'email', 'contactNo', 'password']
 const user_model = new mongoose.Schema(
     {
-        user_token: {
+        user_id: {
             type: String,
             required: true,
             unique: true,
@@ -67,12 +67,66 @@ const otp_model = new mongoose.Schema(
     { timestamps: true }
 );
 
+// Handyman => fields => ['handyman_id', 'name', 'email', 'contactNo', 'password']
+const handyman_model = new mongoose.Schema(
+    {
+        handyman_id: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true,
+        },
+        phone: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        address: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        services: [
+            {
+                type: String,
+                required: true,
+                trim: true,
+            },
+        ],
+        ratings: [
+            {
+                type: Number,
+                required: true,
+                min: 1,
+                max: 5,
+            },
+        ],
+    },
+    { timestamps: true }
+);
+
 // const Categories = mongoose.model('categories', categories_model);
 // const Transaction = mongoose.model('transaction', transaction_model);
-const User = mongoose.model('user', user_model);
-const Otp = mongoose.model('otp', otp_model);
+const User = mongoose.model("user", user_model);
+const Otp = mongoose.model("otp", otp_model);
+const Handyman = mongoose.model("handyman", handyman_model);
 
 module.exports = {
     User,
     Otp,
+    Handyman,
 };

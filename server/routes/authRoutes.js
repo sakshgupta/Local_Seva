@@ -5,10 +5,17 @@ const {
     verifySignup,
     logIn,
 } = require("../controller/userAuthController");
+const {
+    handymanVerifySignup,
+    handymanSignup,
+} = require("../controller/handymanController");
 
-// route prefix: "/api/user"
-router.route("/signup").post(signUp);
-router.route("/signup/verify").post(verifySignup);
-router.route("/login").post(logIn);
+// route prefix: "/api"
+router.route("/user/signup").post(signUp);
+router.route("/user/signup/verify").post(verifySignup);
+router.route("/user/login").post(logIn);
+
+router.route("/handyman/signup/verify").post(handymanVerifySignup);
+router.route("/handyman/signup").post(handymanSignup);
 
 module.exports = router;

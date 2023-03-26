@@ -1,60 +1,20 @@
-const express = require("express");
-const app = express();
-const bcrypt = require("bcrypt");
-require("dotenv").config();
 const otpGenerator = require("otp-generator");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-// requiring models
-const { User, Otp } = require("../models/model");
-
-// requiring controllers
-const { sendOtpMail, sendLoginVerificationMail } = require("./mailController");
-
-// getting jwt token
+const dotenv = require("dotenv");
+dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// route - http://localhost:8080/api/user/login
-const logIn = async (req, res) => {
-    const Email = req.body.email;
-    const Password = req.body.password;
+// requiring models
+const { Handyman, Otp } = require("../models/model");
+// requiring controllers
+const { sendOtpMail } = require("./mailController");
 
-    User.find({ email: Email }, async function (err, docs) {
-        if (docs.length === 0) {
-            return res.status(400).send({ msg: "User not found" });
-        } else {
-            const validPassword = await bcrypt.compare(
-                Password,
-                docs[0].password
-            );
-
-            if (Email === docs[0].email && validPassword) {
-                User.find({ email: Email }, async function (err, user) {
-                    var Details = {
-                        email: user[0].email,
-                        name: user[0].username,
-                    };
-                    console.log(user);
-                    sendLoginVerificationMail(Details);
-                    res.status(200).send({
-                        msg: "Log-In successful!",
-                        user_id: user[0].user_id,
-                    });
-                });
-            } else {
-                return res.status(406).send({ msg: "Invalid password" });
-            }
-        }
-    });
-};
-
-// route - http://localhost:8080/api/user/signup
-const signUp = async (req, res) => {
+// route - http://localhost:8080/api/handyman/signup/verify
+const handymanVerifySignup = async (req, res) => {
     const Email = req.body.email;
 
-    //validating whether user already exists or not
-
-    User.find({ email: Email }, async function (err, docs) {
+    Handyman.find({ email: Email }, async function (err, docs) {
         if (docs.length !== 0) {
             return res.status(400).send({
                 msg: "This Email ID is already registered. Try Signing In instead!",
@@ -66,7 +26,7 @@ const signUp = async (req, res) => {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log("Users deleted successfully");
+                        console.log("Handymans deleted successfully");
                     }
                 });
             } catch (e) {
@@ -93,12 +53,12 @@ const signUp = async (req, res) => {
             const salt = await bcrypt.genSalt(10);
             otp.otp = await bcrypt.hash(otp.otp, salt);
 
-            const newUserLogin = new Otp({
+            const newHandymanLogin = new Otp({
                 email: otp.email,
                 otp: otp.otp,
             });
 
-            newUserLogin.save((error, success) => {
+            newHandymanLogin.save((error, success) => {
                 if (error) console.log(error);
                 else console.log("Saved::otp::ready for validation");
             });
@@ -108,17 +68,17 @@ const signUp = async (req, res) => {
     });
 };
 
-// route - http://localhost:8080/api/user/signup/verify
-const verifySignup = async (req, res) => {
-    const number = req.body.contactNumber;
-    const inputOtp = req.body.otp;
-    const Email = req.body.email;
-    const name = req.body.username;
-    const Password = req.body.password;
-
-    // encrypting password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(Password, salt);
+// route - http://localhost:8080/api/handyman/signup
+const handymanSignup = async (req, res) => {
+    const {
+        name: Name,
+        email: Email,
+        otp: inputOtp,
+        password: Password,
+        phone: Phone,
+        address: Address,
+        services: Services,
+    } = req.body;
 
     Otp.find({ email: Email }, async function (err, docs) {
         if (docs.length === 0) {
@@ -129,25 +89,31 @@ const verifySignup = async (req, res) => {
             const validUser = await bcrypt.compare(inputOtp, generatedOtp);
 
             if (Email === docs[0].email && validUser) {
-                // generating user token
+                // generating handymman token
                 const secret = JWT_SECRET;
                 const payload = {
-                    email: req.body.email,
+                    email: Email,
                 };
                 const token = jwt.sign(payload, secret);
 
-                //saving new user
-                const newUser = new User({
-                    user_id: token,
-                    username: name,
+                // Hash the password
+                const salt = await bcrypt.genSalt();
+                const hashedPassword = await bcrypt.hash(Password, salt);
+
+                const new_handyman = new Handyman({
+                    handyman_id: token,
+                    name: Name,
                     email: Email,
-                    contactNumber: number,
+                    phone: Phone,
                     password: hashedPassword,
+                    address: Address,
+                    services: Services,
+                    ratings: [],
                 });
 
-                newUser.save((error, success) => {
+                await new_handyman.save((error, success) => {
                     if (error) console.log(error);
-                    else console.log("Signup successful: ", newUser);
+                    else console.log("Saved::New Handyman::credentials.");
                 });
 
                 Otp.deleteMany({ email: Email }, async function (err) {
@@ -159,7 +125,7 @@ const verifySignup = async (req, res) => {
                 });
 
                 return res.status(200).send({
-                    msg: "Account creation successful!",
+                    msg: "Handyman Account creation successful!",
                     user_id: token,
                 });
             } else {
@@ -171,8 +137,40 @@ const verifySignup = async (req, res) => {
     });
 };
 
+const handymanSignin = async (req, res) => {
+    const Email = req.body.email;
+    const Pass = req.body.password;
+
+    Handyman.find({ email: Email }, async function (err, docs) {
+        if (docs.length === 0) {
+            return res.status(400).send({ msg: "Handyman access denied" });
+        } else if (Pass === docs[0].pass) {
+            res.status(200).send({
+                msg: "Success",
+                handyman_token: docs[0].handyman_id,
+            });
+        } else {
+            return res.status(400).send({ msg: "Email or Password is wrong" });
+        }
+    });
+};
+
+const handymanDetails = async (req, res) => {
+    const handyman_token = req.body.handyman_id;
+
+    Handyman.find({ handyman_id: handyman_token }, async function (err, docs) {
+        if (err) {
+            console.log(err);
+            res.status(400).send({ msg: "No such handyman exists" });
+        } else {
+            res.status(200).send(docs[0]);
+        }
+    });
+};
+
 module.exports = {
-    signUp,
-    verifySignup,
-    logIn,
+    handymanVerifySignup,
+    handymanSignup,
+    handymanSignin,
+    handymanDetails,
 };
