@@ -1,0 +1,124 @@
+.servicePacks_outer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.servicePacks_map {
+  background: url("./images/Map.png");
+  background-size: cover;
+  height: 45vh;
+  width: 100%;
+}
+
+.servicePacks_serviceInfo_outer {
+  background: url("./images/maid.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 55vh;
+}
+
+.servicePacks_serviceInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.servicePacks_input {
+  display: flex;
+  width: 600px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  padding: 20px 30px;
+  margin-bottom: 10px;
+}
+
+.servicePacks_input_left {
+  flex: 0.25;
+}
+
+.servicePacks_input_right {
+  flex: 0.75;
+}
+
+.servicePacks_input_left {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.servicePacks_input_right {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.servicePacks_buttons {
+  width: 600px;
+}
+
+.servicePacks_buttons button {
+  background: #f79d2b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 10px 35px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  width: 600px;
+}
+
+@media only screen and (max-width: 992px) {
+  .servicePacks_buttons,
+  .servicePacks_buttons button {
+    display: flex;
+  }
+
+  .servicePacks_serviceInfo,
+  .servicePacks_buttons,
+  .servicePacks_buttons button {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .servicePacks_input,
+  .servicePacks_buttons,
+  .servicePacks_buttons button {
+    width: 580px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .servicePacks_input,
+  .servicePacks_buttons,
+  .servicePacks_buttons button {
+    width: 340px;
+  }
+
+  .servicePacks_input {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+  }
+
+  .servicePacks_input_left {
+    flex: 0.4;
+    margin-right: 5px;
+  }
+
+  .servicePacks_input_right {
+    flex: 0.6;
+  }
+}

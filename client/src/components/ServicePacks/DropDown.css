@@ -1,0 +1,31 @@
+.dropdown {
+  width: 400px;
+  position: relative;
+  user-select: none;
+}
+
+.dropdown .dropdown-btn {
+  cursor: pointer;
+}
+
+.dropdown .dropdown-content {
+  position: absolute;
+  top: 150%;
+  padding: 15px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: #333;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #f4f4f4;
+}
