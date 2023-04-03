@@ -1,5 +1,6 @@
 import React from "react";
 import "../DropDown.css";
+import dropdown from "../images/drop-down.png";
 import { useState } from "react";
 
 function DropDown({ selected, setSelected }) {
@@ -10,6 +11,7 @@ function DropDown({ selected, setSelected }) {
     <div className="dropdown">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
         choose {selected}
+        <img src={dropdown} alt="" className="dropdown-down-btn" />
       </div>
       {isActive && (
         <div className="dropdown-content">

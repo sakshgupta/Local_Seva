@@ -4,8 +4,21 @@
   user-select: none;
 }
 
+@media only screen and (max-width: 576px) {
+  .dropdown {
+    width: 200px;
+  }
+}
+
 .dropdown .dropdown-btn {
   cursor: pointer;
+  position: relative;
+}
+
+.dropdown-down-btn {
+  position: absolute;
+  top: -5px;
+  right: 0;
 }
 
 .dropdown .dropdown-content {
