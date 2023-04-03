@@ -14,7 +14,7 @@ import "./index.css";
 function App() {
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Navbar />} />
       </Routes>
       <Routes>
@@ -27,19 +27,19 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/" element={<Footer />} />
-      </Routes>
+      </Routes> */}
+
+      {/* <Homepage />
+      <BookingDone />
+      <LogIn />
+      <Signup />
+      <Otp />
+       <WhyPartner />
+      <Footer />
+       <ServicePage /> */}
+
+      <Maid />
     </>
-
-    //   {/* <Homepage /> */}
-    //   {/* <BookingDone /> */}
-    //   {/* <LogIn /> */}
-    //   {/* <Signup /> */}
-    //   {/* <Otp /> */}
-    //   {/* <WhyPartner /> */}
-    //   {/* <Footer /> */}
-    //   <ServicePage />
-
-    // <Maid />
 
     // </>
   );
