@@ -10,6 +10,7 @@ import Signup from "./components/Register/Signup";
 import WhyPartner from "./components/RegisterasProfessional/WhyPartner";
 import Maid from "./components/ServicePacks/Maid/Maid";
 import "./index.css";
+import RegisterasProfessional from "./components/RegisterasProfessional/RegisterasProfessional";
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
       <Footer />
        <ServicePage /> */}
 
-      <Maid />
+      {/* <Maid /> */}
+      <RegisterasProfessional />
     </>
 
     // </>

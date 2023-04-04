@@ -1,0 +1,42 @@
+.registerProfessional_banner {
+  width: 100%;
+}
+
+.registerProfessional_banner img {
+  width: 100%;
+  height: auto;
+}
+
+.registerProfessional_Link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.registerProfessional_Link button {
+  margin-top: 30px;
+  background: #f79d2b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 15px 35px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  width: 400px;
+}
+
+@media only screen and (max-width: 768px) {
+  .registerProfessional_Link button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 16px;
+    line-height: 22px;
+    width: 300px;
+  }
+}
