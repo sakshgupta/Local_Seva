@@ -3,6 +3,13 @@
   margin-bottom: 80px;
 }
 
+@media only screen and (max-width: 768px) {
+  .whyPartner_container {
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+}
+
 .whyPartner_heading {
   font-family: "Space Grotesk";
   font-style: normal;
@@ -29,7 +36,9 @@
 .whyPartner_info_boxes {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
+  height: 100%;
   flex: 1;
 }
 
