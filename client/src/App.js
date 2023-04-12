@@ -7,44 +7,38 @@ import Homepage from "./components/Homepage/Homepage";
 import LogIn from "./components/Register/LogIn";
 import Otp from "./components/Register/Otp";
 import Signup from "./components/Register/Signup";
-import WhyPartner from "./components/RegisterasProfessional/WhyPartner";
-import Maid from "./components/ServicePacks/Maid/Maid";
-import "./index.css";
 import RegisterasProfessional from "./components/RegisterasProfessional/RegisterasProfessional";
+import Service from "./components/ServicePacks/Services/Service";
+import "./index.css";
 
 function App() {
-  return (
-    <>
-      {/* <Routes>
-        <Route path="/" element={<Navbar />} />
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/bookingsummary" element={<BookingDone />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/otp" element={<Otp />} />
-        <Route path="/registerasprofessional" element={<WhyPartner />} />
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Footer />} />
-      </Routes> */}
-
-      {/* <Homepage />
-      <BookingDone />
-      <LogIn />
-      <Signup />
-      <Otp />
-       <WhyPartner />
-      <Footer />
-       <ServicePage /> */}
-
-      {/* <Maid /> */}
-      <RegisterasProfessional />
-    </>
-
-    // </>
-  );
+    return (
+        <>
+            {/* Navbar */}
+            <Routes>
+                <Route path="/" element={<Navbar />} />
+            </Routes>
+            {/* Rest Routes */}
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/bookingsummary" element={<BookingDone />} />
+                {/* User Login and signup */}
+                <Route path="/user/login" element={<LogIn />} />
+                <Route path="/user/signup" element={<Signup />} />
+                <Route path="/user/signup/verify" element={<Otp />} />
+                {/* Handyman Registration */}
+                <Route
+                    path="/handyman/register"
+                    element={<RegisterasProfessional />}
+                />
+                <Route path="/services/:serviceName" element={<Service />} />
+            </Routes>
+            {/* Footer */}
+            <Routes>
+                <Route path="/" element={<Footer />} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;

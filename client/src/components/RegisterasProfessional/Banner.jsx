@@ -1,6 +1,7 @@
 import React from "react";
 import "./Banner.css";
 import registerProfessionalImg from "./images/registerProfessional.png";
+import { Link } from "react-router-dom";
 
 function Banner() {
   return (
@@ -10,9 +11,9 @@ function Banner() {
       </div>
       <div className="container">
         <div className="registerProfessional_Link">
-          <a href="#">
+          <Link to="#">
             <button>Register Here</button>
-          </a>
+          </Link>
         </div>
       </div>
     </>

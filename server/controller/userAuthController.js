@@ -171,8 +171,67 @@ const verifySignup = async (req, res) => {
     });
 };
 
+// route - http://localhost:8080/api/user/signup/resendOtp
+const resendOtp = async (req, res) => {
+    const Email = req.body.email;
+
+    // validating whether user already exists or not
+    const user = await User.findOne({ Email });
+    if (user) {
+        return res.status(400).send({
+            msg: "This Email ID is not registered. Try Signing Up instead!",
+        });
+    }
+
+    // clearing old otps
+    try {
+        await Otp.deleteMany({ email: Email }, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Old OTP deleted successfully");
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+
+    // generate new otp for the user
+    const OTP = otpGenerator.generate(6, {
+        digits: true,
+        upperCaseAlphabets: false,
+        specialChars: false,
+        lowerCaseAlphabets: false,
+    });
+
+    const otp = {
+        email: Email,
+        otp: OTP,
+    };
+    console.log("New OTP Before hashing: ", otp);
+
+    sendOtpMail(Email, otp.otp);
+
+    //encrypting the otp and then saving to Otp_table
+    const salt = await bcrypt.genSalt(10);
+    otp.otp = await bcrypt.hash(otp.otp, salt);
+
+    const newUserLogin = new Otp({
+        email: otp.email,
+        otp: otp.otp,
+    });
+
+    newUserLogin.save((error, success) => {
+        if (error) console.log(error);
+        else console.log("Saved::otp::ready for validation");
+    });
+
+    return res.status(200).send({ msg: "New Otp sent successfully!" });
+};
+
 module.exports = {
     signUp,
     verifySignup,
     logIn,
+    resendOtp,
 };
