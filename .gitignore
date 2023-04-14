@@ -7,3 +7,32 @@ client/build
 server/node_modules
 server/*.txt
 server/*.env
+
+# Ignore the client build folder
+client/build/
+
+# Ignore the node_modules folders
+node_modules/
+
+# Ignore the .env file
+.env
+
+# Ignore the VS Code workspace settings folder
+.vscode/
+
+# Ignore the git logs
+logs/
+*.log
+
+# Ignore the build folder
+build/
+
+# Ignore any files in the root directory ending with .log or .txt
+*.log
+*.txt
+
+# Ignore any files in the root directory ending with .DS_Store (macOS)
+.DS_Store
+
+# Ignore any files in the root directory ending with .idea (JetBrains IDEs)
+.idea/

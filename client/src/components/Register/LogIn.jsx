@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Login.css";
 import apple_logo from "./images/apple_logo.png";
 import facebook_logo from "./images/facebook_logo.png";
 import google_logo from "./images/google_logo.png";
-import "./Login.css";
 
 function LogIn() {
     const navigate = useNavigate();
@@ -124,7 +124,7 @@ function LogIn() {
                     <div className="login_form_switch">
                         Don't have an account?
                         <span>
-                            <a href="">Sign Up</a>
+                            <Link to="/user/signup">Sign Up</Link>
                         </span>
                     </div>
                 </form>
