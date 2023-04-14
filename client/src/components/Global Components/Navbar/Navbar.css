@@ -1,0 +1,113 @@
+.navbar_outer {
+    width: 100%;
+    background-color: #1a2940;
+    padding: 10px 0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.navbar-logo-img {
+    height: 80px;
+}
+
+.main_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.menu_link {
+    flex: 0.6;
+}
+
+.menu_link ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_link ul li a {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    color: #ffffff;
+}
+
+.signup_login_button button {
+    border: none;
+    outline: none;
+    padding: 6px 15px;
+    background: rgba(247, 157, 43, 0.9);
+    border-radius: 40px;
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    color: #ffffff;
+}
+
+.mobile_menu_main {
+    display: none;
+}
+
+.mobile_menu_toggle {
+    color: white;
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .mobile_menu_toggle {
+        display: block;
+    }
+
+    .mobile_menu_main.show {
+        display: block;
+        padding: 10px 0;
+    }
+
+    .mobile_menu_main {
+    display: none;
+  }
+
+    .menu_link,
+    .signup_login_button {
+        display: none;
+    }
+
+    .mobile_menu_main ul li a {
+        font-family: "Space Grotesk";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #ffffff;
+    }
+
+    .mobile_menu_main ul li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mobile_menu_main ul li a button {
+        margin-top: 10px;
+        border: none;
+        outline: none;
+        padding: 6px 15px;
+        background: rgba(247, 157, 43, 0.9);
+        border-radius: 40px;
+        font-family: "Space Grotesk";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #ffffff;
+    }
+}
