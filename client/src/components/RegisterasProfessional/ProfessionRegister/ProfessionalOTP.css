@@ -1,0 +1,72 @@
+.professional_otp_main_container {
+  background: url("./images/professionalRegister_background.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+.otp_form {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.otp_form_heading {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.otp_form_input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.otp_form_input input {
+  text-align: center;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  outline: none;
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+  background: white;
+  padding: 20px 10px;
+}
+
+.otp_form_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.otp_form_button button {
+  background: rgba(26, 41, 64, 0.75);
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 18px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  color: #ffffff;
+}
