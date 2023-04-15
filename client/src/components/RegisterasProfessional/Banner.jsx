@@ -11,7 +11,7 @@ function Banner() {
       </div>
       <div className="container">
         <div className="registerProfessional_Link">
-          <Link to="#">
+          <Link to="/handyman/signup">
             <button>Register Here</button>
           </Link>
         </div>

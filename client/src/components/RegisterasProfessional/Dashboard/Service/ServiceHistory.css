@@ -1,0 +1,61 @@
+.serviceHistory_outer {
+  margin-top: 120px;
+}
+
+.serviceHistory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.serviceHistory_heading {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #2f2f2f;
+}
+
+.serviceHistory_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.serviceInfo_details {
+  margin-bottom: 10px;
+  background: #d9d9d9;
+  padding: 20px 5px;
+}
+
+.serviceInfo_heading {
+  background: #636060e3;
+}
+
+.serviceHistory_maincontainer {
+  min-width: 1100px;
+}
+
+.serviceInfo_details ul {
+  display: flex;
+}
+
+.serviceInfo_details ul li {
+  flex: 0.2;
+  text-align: center;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.serviceInfo_heading ul li {
+  font-weight: bold;
+  color: #fff;
+}

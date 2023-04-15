@@ -52,7 +52,7 @@ function ProfessionalRegister() {
             <div className="signup_form_switch">
               Already have an account?
               <span>
-                <a href="/handyman/professionalLogin">Log in!</a>
+                <a href="/handyman/login">Log in!</a>
               </span>
             </div>
           </form>
