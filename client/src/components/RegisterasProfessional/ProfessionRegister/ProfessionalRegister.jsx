@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import apple_logo from "./images/apple_logo.png";
 import facebook_logo from "./images/facebook_logo.png";
 import google_logo from "./images/google_logo.png";
@@ -16,7 +13,7 @@ function ProfessionalRegister() {
             <div className="signup_form_heading">
               Create Account
               <br />
-              <span>A few clicks away from creating your account</span>
+              <span>Create your professional account</span>
             </div>
             <div className="signup_form_input">
               <input type="text" placeholder="Name" />
@@ -31,7 +28,7 @@ function ProfessionalRegister() {
               <input type="number" placeholder="Phone Number" />
             </div>
             <div className="signup_form_button">
-              <button type="submit">Create Account</button>
+              <button type="submit">Next</button>
             </div>
             <div className="signup_form_or">
               <div className="signup_form_line"></div>
@@ -52,7 +49,7 @@ function ProfessionalRegister() {
             <div className="signup_form_switch">
               Already have an account?
               <span>
-                <a href="/handyman/login">Log in!</a>
+                <a href="">Log in!</a>
               </span>
             </div>
           </form>
