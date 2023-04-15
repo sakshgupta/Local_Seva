@@ -14,6 +14,7 @@ import RegisterasProfessional from "./components/RegisterasProfessional/Register
 import Service from "./components/ServicePacks/Services/Service";
 import "./index.css";
 import Dashboard from "./components/RegisterasProfessional/Dashboard/Dashboard";
+import ProfessionalRegisterSecond from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalRegisterSecond";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
         <Route path="/services/:serviceName" element={<Service />} />
         <Route path="/handyman/login" element={<ProfessionalLogin />} />
         <Route path="/handyman/signup" element={<ProfessionalRegister />} />
+        <Route
+          path="/handyman/signupmore"
+          element={<ProfessionalRegisterSecond />}
+        />
         <Route path="/handyman/verify" element={<ProfessionalOTP />} />
         {/* Add new routes below this */}
         {/* <Route path="..." element={<... />} /> */}
