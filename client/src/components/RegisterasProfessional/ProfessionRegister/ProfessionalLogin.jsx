@@ -54,7 +54,7 @@ function ProfessionalLogin() {
           <div className="login_form_switch">
             Don't have an account?
             <span>
-              <a href="/handyman/professionalSignup">Sign Up</a>
+              <a href="/handyman/signup">Sign Up</a>
             </span>
           </div>
         </form>
