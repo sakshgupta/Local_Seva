@@ -1,0 +1,168 @@
+.serviceProvider_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.serviceProvider_heading h1 {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #000000;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.serviceProvider_heading p {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.servicePerson_main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 50px;
+  margin-bottom: 20px;
+}
+
+.servicePerson_content {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.servicePerson_image {
+  margin-right: 30px;
+}
+
+.servicePerson_image img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.servicePerson_name {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  color: #000000;
+  /* margin-bottom: 5px; */
+}
+
+.servicePerson_address {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.servicePerson_experience,
+.servicePerson_jobsDone {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.servicePerson_button button {
+  border: none;
+  outline: none;
+  background: #f79d2b;
+  border-radius: 7px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  padding: 5px 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .servicePerson_main {
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+  }
+
+  .servicePerson_content {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .serviceProvider_heading h1 {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 5px;
+  }
+
+  .serviceProvider_heading p {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .servicePerson_image {
+    margin-right: 10px;
+  }
+
+  .servicePerson_image img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .servicePerson_name {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .servicePerson_address {
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 4px;
+  }
+
+  .servicePerson_experience,
+  .servicePerson_jobsDone {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .servicePerson_button button {
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    padding: 4px 22px;
+  }
+
+  .serviceProvider_heading h1 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .serviceProvider_heading p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}

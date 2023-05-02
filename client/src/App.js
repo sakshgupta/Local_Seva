@@ -15,6 +15,7 @@ import Service from "./components/ServicePacks/Services/Service";
 import "./index.css";
 import Dashboard from "./components/RegisterasProfessional/Dashboard/Dashboard";
 import ProfessionalRegisterSecond from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalRegisterSecond";
+import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 
 function App() {
   return (
@@ -48,6 +49,10 @@ function App() {
       {/* Footer */}
       <Routes>
         <Route path="/" element={<Footer />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/serviceProvider" element={<ServiceProvider />} />
       </Routes>
     </>
   );
