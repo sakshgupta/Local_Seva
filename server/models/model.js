@@ -95,10 +95,16 @@ const handyman_model = new mongoose.Schema(
             type: String,
             required: true,
         },
-        address: {
+        aadharNumber: {
             type: String,
             required: true,
             trim: true,
+        },
+        aadharFront: {
+            type: Object,
+        },
+        aadharBack: {
+            type: Object,
         },
         services: [
             {

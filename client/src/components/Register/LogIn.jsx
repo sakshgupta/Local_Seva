@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "universal-cookie";
+import { setUserToken } from "./../../utils/cookies/setUserToken";
 import "./Login.css";
 import apple_logo from "./images/apple_logo.png";
 import facebook_logo from "./images/facebook_logo.png";
@@ -11,6 +13,23 @@ function LogIn() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [userId, setUserId] = useState(null);
+
+    var cookies = new Cookies();
+
+    useEffect(() => {
+        const userId = cookies.get("user_token");
+        // If cookie found, Redirect to dashboard
+        if (userId) {
+            setUserId(userId);
+            toast.success("Redirecting you ...");
+
+            // Redirect to dashboard
+            setTimeout(() => {
+                navigate("/");
+            }, 2000);
+        }
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,6 +52,7 @@ function LogIn() {
             if (response.status === 200) {
                 toast.success(data.msg);
                 toast.info("Redirecting you...");
+                setUserToken(data.user_id); //set up cookie
                 console.log(data);
                 setTimeout(() => {
                     navigate("/");
@@ -40,16 +60,6 @@ function LogIn() {
             } else {
                 console.error(`Failed with status code ${response.status}`);
                 toast.error(data.msg);
-                // redirect to signup if shown "This Email ID is not registered. Try Signing Up instead!"
-                setTimeout(() => {
-                    // Set success message
-                    toast.info("Redirecting you to SignUp...");
-                }, 1700);
-
-                // Redirect to dashboard
-                setTimeout(() => {
-                    navigate("/user/signup");
-                }, 3000);
             }
         } catch (error) {
             console.error("Invalid JSON string:", error.message);

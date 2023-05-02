@@ -229,9 +229,21 @@ const resendOtp = async (req, res) => {
     return res.status(200).send({ msg: "New Otp sent successfully!" });
 };
 
+// route - http://localhost:8080/api/user/getallusers
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({ msg: error.message });
+    }
+};
+
+
 module.exports = {
     signUp,
     verifySignup,
     logIn,
     resendOtp,
+    getAllUsers,
 };

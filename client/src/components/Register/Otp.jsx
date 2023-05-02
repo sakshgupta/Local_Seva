@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Otp.css";
+import { setUserToken } from "./../../utils/cookies/setUserToken";
 
 function Otp(props) {
     const navigate = useNavigate();
@@ -69,6 +70,7 @@ function Otp(props) {
             if (response.status === 200) {
                 toast.success(data.msg);
                 toast.info("Redirecting you...");
+                setUserToken(data.user_id); //set up cookie
                 console.log(data);
                 setTimeout(() => {
                     navigate("/");

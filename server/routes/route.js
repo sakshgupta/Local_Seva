@@ -1,16 +1,13 @@
-const router = require('express').Router();
-const controller = require('../controller/controller');
+const express = require("express");
+const router = express.Router();
+const {
+    getAllUsers,
+} = require("../controller/userController");
 
-// router.route('/api/categories')
-//     .post(controller.create_categories)
-//     .get(controller.get_categories);
+const { handymanDetails } = require("../controller/handymanController");
 
-// router.route('/api/transaction')
-//     .post(controller.create_transaction)
-//     .get(controller.get_transaction)
-//     .delete(controller.delete_transaction);
-
-// router.route('/api/labels')
-//     .get(controller.get_labels);
+// route prefix: "/api"
+router.route("/user/getallusers").get(getAllUsers);
+router.route("/handyman/gethandyman").post(handymanDetails);
 
 module.exports = router;

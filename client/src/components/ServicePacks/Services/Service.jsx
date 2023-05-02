@@ -5,7 +5,7 @@ import "../ServicePacks.css";
 import { useState } from "react";
 import Map from "../../../utils/Map";
 import useGeoLocation from "../../../utils/useGeoLocation";
-import DropDown from "./DropDown";
+import DropDown from "../../../utils/DropDown";
 import Services_Navbar from "./Services_Navbar";
 
 function Service() {
@@ -14,10 +14,16 @@ function Service() {
 
     const location = useGeoLocation(); //getting current location of the user
 
+    const options = [
+        "Dusting @ Rs.200",
+        "Cooking @ Rs.200",
+        "Cleaning @ Rs.200",
+    ];
+
     return (
         <div className="servicePacks_outer">
             <div>
-                <Services_Navbar serviceName = {serviceName}/>
+                <Services_Navbar serviceName={serviceName} />
             </div>
             {/* Map */}
             <div className="servicePacks_map">
@@ -42,6 +48,7 @@ function Service() {
                             <div className="servicePacks_input_left">Price</div>
                             <div className="servicePacks_input_right">
                                 <DropDown
+                                    options={options}
                                     selected={selected}
                                     setSelected={setSelected}
                                 />

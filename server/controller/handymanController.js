@@ -8,10 +8,12 @@ const JWT_SECRET = process.env.JWT_SECRET;
 // requiring models
 const { Handyman, Otp } = require("../models/model");
 // requiring controllers
-const { sendOtpMail } = require("./mailController");
+const { sendOtpMail, sendLoginVerificationMail } = require("./mailController");
+// requiring utility functions
+const cloudinary = require("../utils/cloudinary");
 
-// route - http://localhost:8080/api/handyman/signup/verify
-const handymanVerifySignup = async (req, res) => {
+// route - http://localhost:8080/api/handyman/signup
+const handymanSignup = async (req, res) => {
     const Email = req.body.email;
 
     Handyman.find({ email: Email }, async function (err, docs) {
@@ -33,7 +35,7 @@ const handymanVerifySignup = async (req, res) => {
                 console.log(e);
             }
 
-            // generate otp for new user
+            // generate otp for new handyman
             const OTP = otpGenerator.generate(6, {
                 digits: true,
                 upperCaseAlphabets: false,
@@ -68,15 +70,18 @@ const handymanVerifySignup = async (req, res) => {
     });
 };
 
-// route - http://localhost:8080/api/handyman/signup
-const handymanSignup = async (req, res) => {
+// route - http://localhost:8080/api/handyman/signup/verify
+const handymanVerifySignup = async (req, res) => {
+    console.log(req.body);
     const {
         name: Name,
         email: Email,
         otp: inputOtp,
         password: Password,
         phone: Phone,
-        address: Address,
+        aadharNumber: AadharNumber,
+        aadharFront: AadharFront,
+        aadharBack: AadharBack,
         services: Services,
     } = req.body;
 
@@ -86,9 +91,9 @@ const handymanSignup = async (req, res) => {
         } else {
             const generatedOtp = docs[0].otp;
 
-            const validUser = await bcrypt.compare(inputOtp, generatedOtp);
+            const validHandyman = await bcrypt.compare(inputOtp, generatedOtp);
 
-            if (Email === docs[0].email && validUser) {
+            if (Email === docs[0].email && validHandyman) {
                 // generating handymman token
                 const secret = JWT_SECRET;
                 const payload = {
@@ -100,21 +105,44 @@ const handymanSignup = async (req, res) => {
                 const salt = await bcrypt.genSalt();
                 const hashedPassword = await bcrypt.hash(Password, salt);
 
-                const new_handyman = new Handyman({
-                    handyman_id: token,
-                    name: Name,
-                    email: Email,
-                    phone: Phone,
-                    password: hashedPassword,
-                    address: Address,
-                    services: Services,
-                    ratings: [],
-                });
+                try{
+                    if (AadharFront && AadharBack) 
+                    {
+                        const AadharFrontUploaded = await cloudinary.uploader.upload(AadharFront, {
+                            upload_preset: "local_handyman",
+                        });
+                        const AadharBackUploaded = await cloudinary.uploader.upload(AadharBack, {
+                            upload_preset: "local_handyman",
+                        });
 
-                await new_handyman.save((error, success) => {
-                    if (error) console.log(error);
-                    else console.log("Saved::New Handyman::credentials.");
-                });
+                        if(AadharFrontUploaded && AadharBackUploaded){
+                            const new_handyman = new Handyman({
+                                handyman_id: token,
+                                name: Name,
+                                email: Email,
+                                phone: Phone,
+                                password: hashedPassword,
+                                aadharNumber: AadharNumber,
+                                aadharFront: AadharFrontUploaded,
+                                aadharBack: AadharBackUploaded,
+                                services: Services,
+                                ratings: [],
+                            });
+            
+                            await new_handyman.save((error, success) => {
+                                if (error) console.log(error);
+                                else console.log("Saved::New Handyman::credentials.");
+                            });
+                        }
+                    }
+                    else console.log("Image not correct");
+                }
+                catch (error) {
+                    console.log(error);
+                    return res
+                        .status(400)
+                        .send({ msg: "Image not correctly uploaded" });
+                }
 
                 Otp.deleteMany({ email: Email }, async function (err) {
                     if (err) {
@@ -126,7 +154,7 @@ const handymanSignup = async (req, res) => {
 
                 return res.status(200).send({
                     msg: "Handyman Account creation successful!",
-                    user_id: token,
+                    handyman_id: token,
                 });
             } else {
                 return res
@@ -137,28 +165,45 @@ const handymanSignup = async (req, res) => {
     });
 };
 
-const handymanSignin = async (req, res) => {
+// route - http://localhost:8080/api/handyman/login
+const handymanLogin = async (req, res) => {
     const Email = req.body.email;
-    const Pass = req.body.password;
+    const Password = req.body.password;
 
     Handyman.find({ email: Email }, async function (err, docs) {
         if (docs.length === 0) {
-            return res.status(400).send({ msg: "Handyman access denied" });
-        } else if (Pass === docs[0].pass) {
-            res.status(200).send({
-                msg: "Success",
-                handyman_token: docs[0].handyman_id,
-            });
+            return res.status(400).send({ msg: "Handyman not found" });
         } else {
-            return res.status(400).send({ msg: "Email or Password is wrong" });
+            const validPassword = await bcrypt.compare(
+                Password,
+                docs[0].password
+            );
+
+            if (Email === docs[0].email && validPassword) {
+                Handyman.find({ email: Email }, async function (err, handyman) {
+                    var Details = {
+                        email: handyman[0].email,
+                        name: handyman[0].handymanname,
+                    };
+                    console.log(handyman);
+                    sendLoginVerificationMail(Details);
+                    res.status(200).send({
+                        msg: "Log-In successful!",
+                        handyman_id: handyman[0].handyman_id,
+                    });
+                });
+            } else {
+                return res.status(406).send({ msg: "Invalid password" });
+            }
         }
     });
 };
 
+// route - http://localhost:8080/api/handyman/gethandyman
 const handymanDetails = async (req, res) => {
-    const handyman_token = req.body.handyman_id;
+    const handyman_id = req.body.handyman_id;
 
-    Handyman.find({ handyman_id: handyman_token }, async function (err, docs) {
+    Handyman.find({ handyman_id: handyman_id }, async function (err, docs) {
         if (err) {
             console.log(err);
             res.status(400).send({ msg: "No such handyman exists" });
@@ -171,6 +216,6 @@ const handymanDetails = async (req, res) => {
 module.exports = {
     handymanVerifySignup,
     handymanSignup,
-    handymanSignin,
+    handymanLogin,
     handymanDetails,
 };
