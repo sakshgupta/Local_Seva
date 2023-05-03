@@ -83,6 +83,8 @@ const handymanVerifySignup = async (req, res) => {
         aadharFront: AadharFront,
         aadharBack: AadharBack,
         services: Services,
+        lat: Lat,
+        long: Long,
     } = req.body;
 
     Otp.find({ email: Email }, async function (err, docs) {
@@ -105,44 +107,25 @@ const handymanVerifySignup = async (req, res) => {
                 const salt = await bcrypt.genSalt();
                 const hashedPassword = await bcrypt.hash(Password, salt);
 
-                try{
-                    if (AadharFront && AadharBack) 
-                    {
-                        const AadharFrontUploaded = await cloudinary.uploader.upload(AadharFront, {
-                            upload_preset: "local_handyman",
-                        });
-                        const AadharBackUploaded = await cloudinary.uploader.upload(AadharBack, {
-                            upload_preset: "local_handyman",
-                        });
+                const new_handyman = new Handyman({
+                    handyman_id: token,
+                    name: Name,
+                    email: Email,
+                    phone: Phone,
+                    password: hashedPassword,
+                    aadharNumber: AadharNumber,
+                    aadharFront: undefined,
+                    aadharBack: undefined,
+                    lat: Lat,
+                    long: Long,
+                    services: Services,
+                    ratings: [],
+                });
 
-                        if(AadharFrontUploaded && AadharBackUploaded){
-                            const new_handyman = new Handyman({
-                                handyman_id: token,
-                                name: Name,
-                                email: Email,
-                                phone: Phone,
-                                password: hashedPassword,
-                                aadharNumber: AadharNumber,
-                                aadharFront: AadharFrontUploaded,
-                                aadharBack: AadharBackUploaded,
-                                services: Services,
-                                ratings: [],
-                            });
-            
-                            await new_handyman.save((error, success) => {
-                                if (error) console.log(error);
-                                else console.log("Saved::New Handyman::credentials.");
-                            });
-                        }
-                    }
-                    else console.log("Image not correct");
-                }
-                catch (error) {
-                    console.log(error);
-                    return res
-                        .status(400)
-                        .send({ msg: "Image not correctly uploaded" });
-                }
+                await new_handyman.save((error, success) => {
+                    if (error) console.log(error);
+                    else console.log("Saved::New Handyman::credentials.");
+                });
 
                 Otp.deleteMany({ email: Email }, async function (err) {
                     if (err) {
@@ -199,6 +182,16 @@ const handymanLogin = async (req, res) => {
     });
 };
 
+// route - http://localhost:8080/api/handyman/getallhandyman
+const getAllHandyman = async (req, res) => {
+    try {
+        const handyman = await Handyman.find({});
+        res.status(200).json(handyman);
+    } catch (error) {
+        res.status(404).json({ msg: error.message });
+    }
+};
+
 // route - http://localhost:8080/api/handyman/gethandyman
 const handymanDetails = async (req, res) => {
     const handyman_id = req.body.handyman_id;
@@ -218,4 +211,5 @@ module.exports = {
     handymanSignup,
     handymanLogin,
     handymanDetails,
+    getAllHandyman,
 };

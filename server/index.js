@@ -8,10 +8,7 @@ const port = process.env.PORT || 5000;
 
 // use middlewares
 app.use(cors());
-app.use(express.json({ limit: "50mb" }));
-app.use(
-    express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
-);
+app.use(express.json());
 
 // MongoDB Connection
 const con = require("./db/connection");

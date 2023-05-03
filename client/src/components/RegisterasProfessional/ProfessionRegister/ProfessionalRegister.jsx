@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "universal-cookie";
+import "./ProfessionalRegister.css";
+import ProfessionalRegisterSecond from "./ProfessionalRegisterSecond";
 import apple_logo from "./images/apple_logo.png";
 import facebook_logo from "./images/facebook_logo.png";
 import google_logo from "./images/google_logo.png";
-import "./ProfessionalRegister.css";
-import ProfessionalRegisterSecond from "./ProfessionalRegisterSecond";
-import Cookies from "universal-cookie";
 
 function ProfessionalRegister() {
     const navigate = useNavigate();
@@ -54,7 +54,6 @@ function ProfessionalRegister() {
             if (response.status === 200) {
                 toast.success(data.msg);
                 toast.info("Redirecting you...");
-                console.log(data);
                 setVerified(true);
             } else {
                 console.error(`Failed with status code ${response.status}`);

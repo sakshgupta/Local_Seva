@@ -73,23 +73,18 @@ const handyman_model = new mongoose.Schema(
         handyman_id: {
             type: String,
             required: true,
-            unique: true,
         },
         name: {
             type: String,
             required: true,
-            trim: true,
         },
         email: {
             type: String,
             required: true,
-            unique: true,
-            trim: true,
         },
         phone: {
             type: String,
             required: true,
-            trim: true,
         },
         password: {
             type: String,
@@ -97,27 +92,33 @@ const handyman_model = new mongoose.Schema(
         },
         aadharNumber: {
             type: String,
-            required: true,
             trim: true,
         },
         aadharFront: {
-            type: Object,
+            type: String,
+            default:
+                "https://eventplanning24x7.files.wordpress.com/2018/04/events.png",
         },
         aadharBack: {
-            type: Object,
+            type: String,
+            default:
+                "https://eventplanning24x7.files.wordpress.com/2018/04/events.png",
         },
-        services: [
-            {
-                type: String,
-                required: true,
-                trim: true,
-            },
-        ],
+        lat: {
+            type: String,
+            required: true,
+        },
+        long: {
+            type: String,
+            required: true,
+        },
+        services: {
+            type: String,
+        },
         ratings: [
             {
                 type: Number,
-                required: true,
-                min: 1,
+                min: 0,
                 max: 5,
             },
         ],

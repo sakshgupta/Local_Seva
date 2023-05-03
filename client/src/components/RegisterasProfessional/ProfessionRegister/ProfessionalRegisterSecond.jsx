@@ -5,214 +5,212 @@ import "react-toastify/dist/ReactToastify.css";
 import Dropdown from "../../../utils/DropDown";
 import { setHandymanToken } from "../../../utils/cookies/setHandymanToken";
 import "./ProfessionalRegister.css";
+import useGeoLocation from "../../../utils/useGeoLocation";
 
 function ProfessionalRegisterSecond(props) {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const [selected, setSelected] = useState("");
-  const [aadharNumber, setAadharNumber] = useState("");
-  const [otp, setOtp] = useState("");
-  const [aadharFront, setAadharFront] = useState("");
-  const [aadharBack, setAadharBack] = useState("");
-  const [address, setAddress] = useState("");
+    const location = useGeoLocation(); //getting current location of the handyman
 
-  const options = ["Maid", "Carpenter", "Servant"];
-  const country_state = ["Delhi", "MP", "UP"];
-  const district = ["Sehore", "Lucknow", "New Delhi", "Mehrauli", "Okhla"];
+    const [selected, setSelected] = useState("");
+    const [aadharNumber, setAadharNumber] = useState("");
+    const [otp, setOtp] = useState("");
+    const [aadharFront, setAadharFront] = useState("");
+    const [aadharBack, setAadharBack] = useState("");
+    const [address, setAddress] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      services: selected,
-      name: props.name,
-      email: props.email,
-      otp: otp,
-      password: props.password,
-      phone: props.number,
-      aadharNumber: aadharNumber,
-      aadharFront: aadharFront,
-      aadharBack: aadharBack,
-      address: address,
-    };
-    console.log(data);
+    const options = ["Maid", "Carpenter", "Servant"];
 
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_API}/api/handyman/signup/verify`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    // If the OTP is correct, redirect to the dashboard
-    try {
-      const data = await response.json();
-      console.log(data);
-      if (response.status === 200) {
-        toast.success(data.msg);
-        console.log(data);
-        setHandymanToken(data.handyman_id); //set up cookie
-        toast.info("Redirecting you...");
-        console.log(data);
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      } else {
-        console.error(`Failed with status code ${response.status}`);
-        toast.error(data.msg);
-      }
-    } catch (error) {
-      console.error("Invalid JSON string:", error.message);
-    }
-  };
-
-  const handleResendOtp = async () => {
-    try {
-      // Send a request to the backend to resend the OTP
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/api/user/signup/resendOtp`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contactNumber: props.number,
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = {
+            services: selected,
+            name: props.name,
             email: props.email,
-          }),
+            otp: otp,
+            password: props.password,
+            phone: props.number,
+            aadharNumber: aadharNumber,
+            aadharFront: aadharFront != "" ? aadharFront : undefined,
+            aadharBack: aadharBack != "" ? aadharBack : undefined,
+            address: address,
+            lat: location.coordinates.lat,
+            long: location.coordinates.lng,
+        };
+        console.log(data);
+
+        const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_API}/api/handyman/signup/verify`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        );
+        // If the OTP is correct, redirect to the dashboard
+        try {
+            const data = await response.json();
+            console.log(data);
+            if (response.status === 200) {
+                toast.success(data.msg);
+                console.log(data);
+                setHandymanToken(data.handyman_id); //set up cookie
+                toast.info("Redirecting you...");
+                console.log(data);
+                setTimeout(() => {
+                    navigate("/");
+                }, 3000);
+            } else {
+                console.error(`Failed with status code ${response.status}`);
+                toast.error(data.msg);
+            }
+        } catch (error) {
+            console.error("Invalid JSON string:", error.message);
         }
-      );
-      const data = await response.json();
-      if (response.status === 200) {
-        // If the OTP is sent successfully, show a success message
-        toast.success("in resend otp: " + data.msg);
-      } else {
-        // If there was an error in sending the OTP, show an error message
-        toast.error("in resend otp: " + data.msg);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  };
+    };
 
-  const handleAadhaarFrontImageUpload = (e) => {
-    const file = e.target.files[0];
-    TransformAadharFrontFileData(file);
-  };
+    const handleResendOtp = async () => {
+        try {
+            // Send a request to the backend to resend the OTP
+            const response = await fetch(
+                `${process.env.REACT_APP_BACKEND_API}/api/user/signup/resendOtp`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        contactNumber: props.number,
+                        email: props.email,
+                    }),
+                }
+            );
+            const data = await response.json();
+            if (response.status === 200) {
+                // If the OTP is sent successfully, show a success message
+                toast.success("in resend otp: " + data.msg);
+            } else {
+                // If there was an error in sending the OTP, show an error message
+                toast.error("in resend otp: " + data.msg);
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    };
 
-  const handleAadhaarBackImageUpload = (e) => {
-    const file = e.target.files[0];
-    TransformAadharBackFileData(file);
-  };
+    // const handleAadhaarFrontImageUpload = (e) => {
+    //     const file = e.target.files[0];
+    //     TransformAadharFrontFileData(file);
+    // };
 
-  const TransformAadharFrontFileData = (file) => {
-    const reader = new FileReader();
+    // const handleAadhaarBackImageUpload = (e) => {
+    //     const file = e.target.files[0];
+    //     TransformAadharBackFileData(file);
+    // };
 
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setAadharFront(reader.result);
-        console.log(aadharFront);
-      };
-    } else {
-      setAadharFront("");
-    }
-  };
+    // const TransformAadharFrontFileData = (file) => {
+    //     const reader = new FileReader();
 
-  const TransformAadharBackFileData = (file) => {
-    const reader = new FileReader();
+    //     if (file) {
+    //         reader.readAsDataURL(file);
+    //         reader.onloadend = () => {
+    //             setAadharFront(reader.result);
+    //             console.log(aadharFront);
+    //         };
+    //     } else {
+    //         setAadharFront("");
+    //     }
+    // };
 
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setAadharBack(reader.result);
-      };
-    } else {
-      setAadharBack("");
-    }
-  };
+    // const TransformAadharBackFileData = (file) => {
+    //     const reader = new FileReader();
 
-  return (
-    <div>
-      <div className="professional_signup_main_container">
-        <div className="container signup_form">
-          <form onSubmit={handleSubmit}>
-            <div className="signup_form_heading">Add Further Details</div>
-            <div className="signup_form_input">
-              <input
-                type="number"
-                placeholder="OTP"
-                onChange={(e) => setOtp(e.target.value)}
-              />
-            </div>
-            <div className="signup_form_input">
-              <Dropdown
-                options={options}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            </div>
+    //     if (file) {
+    //         reader.readAsDataURL(file);
+    //         reader.onloadend = () => {
+    //             setAadharBack(reader.result);
+    //         };
+    //     } else {
+    //         setAadharBack("");
+    //     }
+    // };
 
-            <div className="signup_form_input">
-              <Dropdown
-                options={country_state}
-                selected={selected}
-                setSelected={setSelected}
-              />
+    return (
+        <div>
+            <div className="professional_signup_main_container">
+                <div className="container signup_form">
+                    <form onSubmit={handleSubmit}>
+                        <div className="signup_form_heading">
+                            Add Further Details
+                        </div>
+                        <div className="signup_form_input">
+                            <input
+                                type="number"
+                                placeholder="OTP"
+                                onChange={(e) => setOtp(e.target.value)}
+                            />
+                        </div>
+                        <div className="signup_form_input">
+                            <Dropdown
+                                options={options}
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                        </div>
+                        <div className="signup_form_input">
+                            <input
+                                type="number"
+                                placeholder="Aadhar Number"
+                                onChange={(e) =>
+                                    setAadharNumber(e.target.value)
+                                }
+                            />
+                        </div>
+                        <span>Add Aadhar Front</span>
+                        <div className="signup_form_input">
+                            <input
+                                type="file"
+                                multiple={false}
+                                accept="image/*"
+                                // onChange={handleAadhaarFrontImageUpload}
+                            />
+                        </div>
+                        <span>Add Aadhar Back</span>
+                        <div className="signup_form_input">
+                            <input
+                                type="file"
+                                multiple={false}
+                                accept="image/*"
+                                // onChange={handleAadhaarBackImageUpload}
+                            />
+                        </div>
+                        <div className="signup_form_input">
+                            <input
+                                type="text"
+                                placeholder="Address"
+                                onChange={(e) => setAddress(e.target.value)}
+                            />
+                        </div>
+                        <div className="signup_form_button">
+                            <button onClick={handleResendOtp}>
+                                Resend OTP
+                            </button>
+                        </div>
+                        <div className="signup_form_button">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div className="signup_form_input">
-              <Dropdown
-                options={district}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            </div>
-            <div className="signup_form_input">
-              <input
-                type="number"
-                placeholder="Aadhar Number"
-                onChange={(e) => setAadharNumber(e.target.value)}
-              />
-            </div>
-            <span>Add Aadhar Front</span>
-            <div className="signup_form_input">
-              <input
-                type="file"
-                multiple={false}
-                accept="image/*"
-                onChange={handleAadhaarFrontImageUpload}
-              />
-            </div>
-            <span>Add Aadhar Back</span>
-            <div className="signup_form_input">
-              <input
-                type="file"
-                multiple={false}
-                accept="image/*"
-                onChange={handleAadhaarBackImageUpload}
-              />
-            </div>
-            <div className="signup_form_input">
-              <input
-                type="text"
-                placeholder="Nearest Post Office"
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-            <div className="signup_form_button">
-              <button onClick={handleResendOtp}>Resend OTP</button>
-            </div>
-            <div className="signup_form_button">
-              <button type="submit">Submit</button>
-            </div>
-          </form>
+            <ToastContainer
+                autoClose={5000}
+                theme="colored"
+                newestOnTop={true}
+            />
         </div>
-      </div>
-      <ToastContainer autoClose={5000} theme="colored" newestOnTop={true} />
-    </div>
-  );
+    );
 }
 
 export default ProfessionalRegisterSecond;

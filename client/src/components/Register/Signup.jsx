@@ -117,20 +117,6 @@ function Signup() {
                   onChange={(e) => setNumber(e.target.value)}
                 />
               </div>
-              <div className="signup_form_input">
-                <Dropdown
-                  options={country_state}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-              </div>
-              <div className="signup_form_input">
-                <Dropdown
-                  options={district}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-              </div>
               <div className="signup_form_button">
                 <button type="submit">Create Account</button>
               </div>

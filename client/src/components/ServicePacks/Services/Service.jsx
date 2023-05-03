@@ -1,14 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../ServicePacks.css";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DropDown from "../../../utils/DropDown";
 import Map from "../../../utils/Map";
 import useGeoLocation from "../../../utils/useGeoLocation";
-import DropDown from "../../../utils/DropDown";
 import Services_Navbar from "./Services_Navbar";
 
 function Service() {
+    const navigate = useNavigate();
+
     const { serviceName } = useParams(); // get the name from the URL
     const [selected, setSelected] = useState("");
 
@@ -55,7 +58,12 @@ function Service() {
                             </div>
                         </div>
                         <div className="servicePacks_buttons">
-                            <button>Continue</button>
+                            <Link
+                                to={`/services/serviceProvider?lat=${location.coordinates.lat}&long=${location.coordinates.lng}`}
+                                style={{ color: "inherit" }}
+                            >
+                                <button>Continue</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

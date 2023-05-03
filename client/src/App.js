@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ServicePage from "./components/AvailableServices/ServicePage";
 import BookingDone from "./components/BookingDone/BookingDone";
 import Footer from "./components/Global Components/Footer/Footer";
@@ -13,54 +15,62 @@ import ProfessionalOTP from "./components/RegisterasProfessional/ProfessionRegis
 import ProfessionalRegister from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalRegister";
 import ProfessionalRegisterSecond from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalRegisterSecond";
 import RegisterasProfessional from "./components/RegisterasProfessional/RegisterasProfessional";
+import Map from "./components/RegisterasProfessional/ServiceTime/Map";
 import Service from "./components/ServicePacks/Services/Service";
 import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 import "./index.css";
-import Map from "./components/RegisterasProfessional/ServiceTime/Map";
 
 function App() {
-  return (
-    <>
-      {/* Navbar */}
-      <Routes>
-        <Route path="/" element={<Navbar />} />
-      </Routes>
-      {/* Rest Routes */}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/bookingsummary" element={<BookingDone />} />
-        {/* User Login and signup */}
-        <Route path="/user/login" element={<LogIn />} />
-        <Route path="/user/signup" element={<Signup />} />
-        <Route path="/user/signup/verify" element={<Otp />} />
-        {/* Handyman Registration */}
-        <Route path="/handyman/register" element={<RegisterasProfessional />} />
-        <Route path="/services/:serviceName" element={<Service />} />
-        <Route path="/handyman/login" element={<ProfessionalLogin />} />
-        <Route path="/handyman/signup" element={<ProfessionalRegister />} />
-        <Route
-          path="/handyman/signup/verify"
-          element={<ProfessionalRegisterSecond />}
-        />
-        {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
-        {/* Add new routes below this */}
-        {/* <Route path="..." element={<... />} /> */}
-        <Route path="/handyman/dashboard" element={<Dashboard />} />
-      </Routes>
-      {/* Footer */}
-      <Routes>
-        <Route path="/" element={<Footer />} />
-      </Routes>
-
-      <Routes>
-        <Route path="/serviceProvider" element={<ServiceProvider />} />
-      </Routes>
-
-      <Routes>
-        <Route path="/mapService" element={<Map />} />
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            {/* Navbar */}
+            <Routes>
+                <Route path="/" element={<Navbar />} />
+            </Routes>
+            {/* Rest Routes */}
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/bookingsummary" element={<BookingDone />} />
+                {/* User Login and signup */}
+                <Route path="/user/login" element={<LogIn />} />
+                <Route path="/user/signup" element={<Signup />} />
+                <Route path="/user/signup/verify" element={<Otp />} />
+                {/* Handyman Registration */}
+                <Route
+                    path="/handyman/register"
+                    element={<RegisterasProfessional />}
+                />
+                <Route path="/services/:serviceName" element={<Service />} />
+                <Route
+                    path="/services/serviceProvider"
+                    element={<ServiceProvider />}
+                />
+                <Route path="/handyman/login" element={<ProfessionalLogin />} />
+                <Route
+                    path="/handyman/signup"
+                    element={<ProfessionalRegister />}
+                />
+                <Route
+                    path="/handyman/signup/verify"
+                    element={<ProfessionalRegisterSecond />}
+                />
+                {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
+                {/* Add new routes below this */}
+                {/* <Route path="..." element={<... />} /> */}
+                <Route path="/handyman/dashboard" element={<Dashboard />} />
+                <Route path="/handyman/otpconfirmation" element={<Map />} />
+            </Routes>
+            {/* Footer */}
+            <Routes>
+                <Route path="/" element={<Footer />} />
+            </Routes>
+            <ToastContainer
+                autoClose={5000}
+                theme="colored"
+                newestOnTop={true}
+            />
+        </>
+    );
 }
 
 export default App;
