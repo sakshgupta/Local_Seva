@@ -8,6 +8,7 @@
 }
 
 .signup_form {
+  height: 90vh;
   display: flex;
   justify-content: center;
   position: absolute;
@@ -16,6 +17,11 @@
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  overflow-y: scroll;
+}
+
+.signup_form::-webkit-scrollbar {
+  display: none;
 }
 
 .signup_form_heading {
