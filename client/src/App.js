@@ -16,52 +16,51 @@ import RegisterasProfessional from "./components/RegisterasProfessional/Register
 import Service from "./components/ServicePacks/Services/Service";
 import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 import "./index.css";
+import Map from "./components/RegisterasProfessional/ServiceTime/Map";
 
 function App() {
-    return (
-        <>
-            {/* Navbar */}
-            <Routes>
-                <Route path="/" element={<Navbar />} />
-            </Routes>
-            {/* Rest Routes */}
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/bookingsummary" element={<BookingDone />} />
-                {/* User Login and signup */}
-                <Route path="/user/login" element={<LogIn />} />
-                <Route path="/user/signup" element={<Signup />} />
-                <Route path="/user/signup/verify" element={<Otp />} />
-                {/* Handyman Registration */}
-                <Route
-                    path="/handyman/register"
-                    element={<RegisterasProfessional />}
-                />
-                <Route path="/services/:serviceName" element={<Service />} />
-                <Route path="/handyman/login" element={<ProfessionalLogin />} />
-                <Route
-                    path="/handyman/signup"
-                    element={<ProfessionalRegister />}
-                />
-                <Route
-                    path="/handyman/signup/verify"
-                    element={<ProfessionalRegisterSecond />}
-                />
-                {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
-                {/* Add new routes below this */}
-                {/* <Route path="..." element={<... />} /> */}
-                <Route path="/handyman/dashboard" element={<Dashboard />} />
-            </Routes>
-            {/* Footer */}
-            <Routes>
-                <Route path="/" element={<Footer />} />
-            </Routes>
+  return (
+    <>
+      {/* Navbar */}
+      <Routes>
+        <Route path="/" element={<Navbar />} />
+      </Routes>
+      {/* Rest Routes */}
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/bookingsummary" element={<BookingDone />} />
+        {/* User Login and signup */}
+        <Route path="/user/login" element={<LogIn />} />
+        <Route path="/user/signup" element={<Signup />} />
+        <Route path="/user/signup/verify" element={<Otp />} />
+        {/* Handyman Registration */}
+        <Route path="/handyman/register" element={<RegisterasProfessional />} />
+        <Route path="/services/:serviceName" element={<Service />} />
+        <Route path="/handyman/login" element={<ProfessionalLogin />} />
+        <Route path="/handyman/signup" element={<ProfessionalRegister />} />
+        <Route
+          path="/handyman/signup/verify"
+          element={<ProfessionalRegisterSecond />}
+        />
+        {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
+        {/* Add new routes below this */}
+        {/* <Route path="..." element={<... />} /> */}
+        <Route path="/handyman/dashboard" element={<Dashboard />} />
+      </Routes>
+      {/* Footer */}
+      <Routes>
+        <Route path="/" element={<Footer />} />
+      </Routes>
 
-            <Routes>
-                <Route path="/serviceProvider" element={<ServiceProvider />} />
-            </Routes>
-        </>
-    );
+      <Routes>
+        <Route path="/serviceProvider" element={<ServiceProvider />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/mapService" element={<Map />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;

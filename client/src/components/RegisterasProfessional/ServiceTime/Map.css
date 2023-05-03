@@ -1,0 +1,159 @@
+.service_map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.service_map_image img {
+  width: 100%;
+  height: auto;
+}
+
+.service_map_button {
+  margin-top: 10px;
+}
+
+.service_map_button a button {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  background-color: white;
+  color: #3461ff;
+  border: 1px solid #3461ff;
+  outline: none;
+  padding: 10px 40px;
+}
+
+.service_map_button a button:hover {
+  color: white;
+  background: #3461ff;
+}
+
+@media only screen and (max-width: 576px) {
+  .service_map_button a button {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px 30px;
+  }
+}
+
+.service_otp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.service_otp_heading {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 34px;
+  color: #2f2f2f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.service_otp_otp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+
+.service_otp_otp input {
+  text-align: center;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  outline: none;
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+  background: #d9d9d9;
+  padding: 20px 10px;
+  font-family: "Space Grotesk";
+}
+
+.service_otp_reset button {
+  background: rgba(26, 41, 64, 0.75);
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  padding: 10px 50px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.service_cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.service_cancel button {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  color: #ff0000;
+  background: white;
+  border: none;
+  outline: none;
+}
+
+.service_cancel button:hover {
+  text-decoration: underline;
+}
+
+.service_otp_heading p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .service_otp_heading {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .service_otp_reset button {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 15px 30px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .service_otp_heading {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .service_otp_reset button {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 10px 25px;
+  }
+
+  .service_cancel button {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
