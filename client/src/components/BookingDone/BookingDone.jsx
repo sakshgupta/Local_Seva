@@ -24,7 +24,9 @@ function BookingDone() {
             </div>
             <div className="booking_summary_info_info">
               A maid has been assigned at your place at 11:00 pm today <br />
-              Our executive will arrive as per schedule
+              Our executive will arrive as per schedule <br />
+              An OTP has been sent to your registered Email address, share it
+              with the handyman upon his arrival
             </div>
           </div>
           <div className="booking_summary_time">
@@ -55,7 +57,7 @@ function BookingDone() {
             </div>
           </div>
           <div className="payment_paynow">
-            <button>Pay Now</button>
+            <button>Pay after Completion</button>
           </div>
         </div>
       </div>

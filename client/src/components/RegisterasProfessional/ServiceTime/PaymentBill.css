@@ -1,24 +1,15 @@
-.workCompleted_container {
+.payment_bill {
+  margin-top: 20px;
+}
+
+.payment_done_button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  margin-top: 20px;
 }
 
-.workcomplete_main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.workcompleted_image,
-.workcompleted_image img {
-  height: 350px;
-  width: 400px;
-}
-
-.workcompleted_button button {
+.payment_done_button button {
   background: #f79d2b;
   border-radius: 12px;
   font-family: "Space Grotesk";
