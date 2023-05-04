@@ -54,8 +54,9 @@ function ServiceProvider() {
             const distanceB = calculateDistance(lat, long, b.lat, b.long);
             return distanceA - distanceB;
         });
-
         setSortedHandymen(sortedHandymen);
+        console.log(sortedHandymen);
+        
     }, [handymen, lat, long]);
 
     return (

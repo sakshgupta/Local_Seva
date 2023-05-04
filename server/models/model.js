@@ -126,14 +126,46 @@ const handyman_model = new mongoose.Schema(
     { timestamps: true }
 );
 
+const notification_model = new mongoose.Schema(
+    {
+        user_id: {
+            type: String,
+            ref: "User",
+            required: true,
+        },
+        handyman_id: {
+            type: String,
+            ref: "Handyman",
+            required: true,
+        },
+        message: {
+            type: String,
+            required: true,
+        },
+        status: {
+            type: String,
+            enum: ["pending", "accepted", "rejected"],
+            default: "pending",
+        },
+        expireAt: {
+            type: Date,
+            default: Date.now,
+            index: { expires: "120s" },
+        },
+    },
+    { timestamps: true }
+);
+
 // const Categories = mongoose.model('categories', categories_model);
 // const Transaction = mongoose.model('transaction', transaction_model);
 const User = mongoose.model("user", user_model);
 const Otp = mongoose.model("otp", otp_model);
 const Handyman = mongoose.model("handyman", handyman_model);
+const Notification = mongoose.model("notification", notification_model);
 
 module.exports = {
     User,
     Otp,
     Handyman,
+    Notification,
 };

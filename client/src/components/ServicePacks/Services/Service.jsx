@@ -17,11 +17,7 @@ function Service() {
 
     const location = useGeoLocation(); //getting current location of the user
 
-    const options = [
-        "Dusting @ Rs.200",
-        "Cooking @ Rs.200",
-        "Cleaning @ Rs.200",
-    ];
+    const options = ["150", "250", "350"];
 
     return (
         <div className="servicePacks_outer">
@@ -44,7 +40,7 @@ function Service() {
                                 Service Charge
                             </div>
                             <div className="servicePacks_input_right">
-                                Rs. 100
+                                ₹ 100
                             </div>
                         </div>
                         <div className="servicePacks_input">
@@ -58,12 +54,16 @@ function Service() {
                             </div>
                         </div>
                         <div className="servicePacks_buttons">
-                            <Link
-                                to={`/services/serviceProvider?lat=${location.coordinates.lat}&long=${location.coordinates.lng}`}
-                                style={{ color: "inherit" }}
-                            >
-                                <button>Continue</button>
-                            </Link>
+                            {selected ? (
+                                <Link
+                                    to={`/services/serviceProvider?lat=${location.coordinates.lat}&long=${location.coordinates.lng}&cost=${selected}`}
+                                    style={{ color: "inherit" }}
+                                >
+                                    <button>Continue</button>
+                                </Link>
+                            ) : (
+                                <button disabled>Select a service</button>
+                            )}
                         </div>
                     </div>
                 </div>

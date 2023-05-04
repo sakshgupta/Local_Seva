@@ -16,6 +16,7 @@ const con = require("./db/connection");
 // Using Routes
 app.use("/api", require("./routes/route"));
 app.use("/api", require("./routes/authRoutes"));
+app.use("/api", require("./routes/notificationRoutes"));
 
 if (process.env.NODE_ENV == "production") {
     // app.use(express.static(path.join(__dirname, '../client/build')));
