@@ -26,7 +26,7 @@ function ProfessionalLogin() {
 
             // Redirect to dashboard
             setTimeout(() => {
-                navigate("/");
+                navigate("/handyman/dashboard");
             }, 2000);
         }
     }, []);
@@ -56,7 +56,7 @@ function ProfessionalLogin() {
                 setHandymanToken(data.handyman_id); //set up cookie
                 console.log(data);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/handyman/dashboard");
                 }, 3000);
             } else {
                 console.error(`Failed with status code ${response.status}`);
@@ -94,7 +94,7 @@ function ProfessionalLogin() {
                         <button
                             type="submit"
                             onClick={() => {
-                                setEmail("as@x.com");
+                                setEmail("saka@gmail.com");
                                 setPassword("123");
                             }}
                         >

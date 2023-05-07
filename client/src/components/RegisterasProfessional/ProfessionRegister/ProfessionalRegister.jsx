@@ -29,7 +29,7 @@ function ProfessionalRegister() {
 
             // Redirect to dashboard
             setTimeout(() => {
-                navigate("/");
+                navigate("/handyman/dashboard");
             }, 2000);
         }
     }, []);

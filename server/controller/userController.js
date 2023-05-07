@@ -115,6 +115,8 @@ const verifySignup = async (req, res) => {
     const Email = req.body.email;
     const name = req.body.username;
     const Password = req.body.password;
+    const Lat = req.body.lat;
+    const Long = req.body.long;
 
     // encrypting password
     const salt = await bcrypt.genSalt(10);
@@ -143,6 +145,8 @@ const verifySignup = async (req, res) => {
                     email: Email,
                     contactNumber: number,
                     password: hashedPassword,
+                    lat: Lat,
+                    long: Long,
                 });
 
                 newUser.save((error, success) => {
@@ -239,6 +243,20 @@ const getAllUsers = async (req, res) => {
     }
 };
 
+// route - http://localhost:8080/api/user/getuser
+const userDetails = async (req, res) => {
+    const user_id = req.body.user_id;
+    console.log(user_id);
+
+    User.find({ user_id: user_id }, async function (err, docs) {
+        if (err) {
+            console.log(err);
+            res.status(400).send({ msg: "No such user exists" });
+        } else {
+            res.status(200).send(docs[0]);
+        }
+    });
+};
 
 module.exports = {
     signUp,
@@ -246,4 +264,5 @@ module.exports = {
     logIn,
     resendOtp,
     getAllUsers,
+    userDetails,
 };

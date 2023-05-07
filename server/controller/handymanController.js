@@ -120,6 +120,7 @@ const handymanVerifySignup = async (req, res) => {
                     long: Long,
                     services: Services,
                     ratings: [],
+                    usersSelected: [],
                 });
 
                 await new_handyman.save((error, success) => {
@@ -206,10 +207,44 @@ const handymanDetails = async (req, res) => {
     });
 };
 
+// route - http://localhost:8080/api/handyman/jobstartotp
+const jobStartOtpVerify = async (req, res) => {
+    const otp = req.body.otp;
+    const Email = req.body.email;
+
+    Otp.find({ email: Email }, async function (err, docs) {
+        if (docs.length === 0) {
+            return res.status(400).send("The OTP expired. Please try again!");
+        } else {
+            const generatedOtp = docs[0].otp;
+
+            const validHandyman = await bcrypt.compare(otp, generatedOtp);
+
+            if (Email === docs[0].email && validHandyman) {
+                Otp.deleteMany({ email: Email }, async function (err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log(`OTP table for ${Email} cleared.`);
+                    }
+                });
+                return res.status(200).send({
+                    msg: "Job Started",
+                });
+            } else {
+                return res
+                    .status(400)
+                    .send({ msg: "OTP does not match. Please try again!" });
+            }
+        }
+    });
+};
+
 module.exports = {
     handymanVerifySignup,
     handymanSignup,
     handymanLogin,
     handymanDetails,
     getAllHandyman,
+    jobStartOtpVerify,
 };

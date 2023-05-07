@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { getUserToken } from "./../../../utils/cookies/getUserToken";
 import "./Navbar.css";
 
 function Navbar() {
+    const navigate = useNavigate();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+    useEffect(() => {
+        const user_id = getUserToken();
+        if (user_id == undefined) {
+            toast.error("You need to login first");
+            navigate("/user/login");
+        }
+    }, []);
 
     const handleToggleMenu = () => {
         setShowMobileMenu(!showMobileMenu);

@@ -50,6 +50,14 @@
   margin-top: 20px;
 }
 
+.service_otp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .service_otp_heading {
   font-family: "Space Grotesk";
   font-style: normal;

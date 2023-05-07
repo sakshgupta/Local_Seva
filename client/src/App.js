@@ -51,7 +51,6 @@ function App() {
                     path="/handyman/signup/verify"
                     element={<ProfessionalRegisterSecond />}
                 />
-                <Route path="/handyman/otpconfirmation" element={<Map />} />
                 {/* Services */}
                 <Route path="/services/:serviceName" element={<Service />} />
                 <Route
@@ -62,6 +61,8 @@ function App() {
                 <Route path="/user/bookingsummary" element={<BookingDone />} />
                 <Route path="/handyman/workdone" element={<Completed />} />
                 <Route path="/handyman/paymentBill" element={<PaymentBill />} />
+                {/* Job Start Otp */}
+                <Route path="/handyman/jobstartotp" element={<Map />} />
                 {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
             </Routes>
             {/* Footer */}

@@ -30,6 +30,35 @@ function sendOtpMail(Email, otp) {
     });
 }
 
+// to send job start otp mail
+function sendJobStartOtpMail(Email, otp) {
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.NODE_MAILER_USER,
+            pass: process.env.NODE_MAILER_PASS,
+        },
+        tls: {
+            rejectUnauthorized: false,
+        },
+    });
+
+    let mailOptions = {
+        from: process.env.NODE_MAILER_USER,
+        to: Email,
+        subject: "Job Start One Time Password - Local Handyman",
+        html: `Please share this OTP with the handyman once he arives. <br><strong>OTP: ${otp}</strong><br><br>Thank you for choosing Local Handyman!<br><br>If you have any questions, please contact us at:<br>Saksham Gupta: saksham.gupta2020@vitbhopal.ac.in.`,
+    };
+
+    transporter.sendMail(mailOptions, function (err, success) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Job Start Otp Email sent successfully");
+        }
+    });
+}
+
 // to send Login Verification Mail
 function sendLoginVerificationMail(Details) {
     let transporter = nodemailer.createTransport({
@@ -92,4 +121,5 @@ module.exports = {
     sendOtpMail,
     sendLoginVerificationMail,
     sendTicket,
+    sendJobStartOtpMail,
 };

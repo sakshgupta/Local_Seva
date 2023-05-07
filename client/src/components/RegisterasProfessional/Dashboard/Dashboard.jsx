@@ -11,10 +11,10 @@ function Dashboard() {
     const handyman_id = gethandymanToken();
     // TODO got all the data from notification now just show the data in the popup
     const [showNotification, setShowNotification] = useState(false);
+    const [notificationData, setNotificationData] = useState("");
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            console.log("idhar");
             const getNotifications = async () => {
                 const response = await fetch(
                     `${process.env.REACT_APP_BACKEND_API}/api/getnotification`,
@@ -30,8 +30,22 @@ function Dashboard() {
                 );
                 try {
                     const data = await response.json();
-                    console.log(data);
-                    setShowNotification(true);
+                    // console.log(data);
+
+                    if (data.length > 0) {
+                        setShowNotification(true);
+                        setNotificationData(data);
+                        const firstNotification = data[0];
+                        if (
+                            firstNotification.status === "accepted" ||
+                            firstNotification.status === "rejected"
+                        ) {
+                            setShowNotification(false);
+                            clearInterval(intervalId);
+                        }
+                    } else {
+                        setShowNotification(false);
+                    }
                     if (response.status === 200) {
                         toast.success(data.msg);
                     } else {
@@ -46,7 +60,7 @@ function Dashboard() {
             };
             setShowNotification(false);
             getNotifications();
-        }, 10000); // check for notifications every 5 seconds
+        }, 5000); // check for notifications every 5 seconds
 
         return () => clearInterval(intervalId);
     }, []);
@@ -58,7 +72,7 @@ function Dashboard() {
             <ServiceHistory />
             {showNotification && (
                 <div className="popUp_container">
-                    <PopUp />
+                    <PopUp notificationData={notificationData} />
                 </div>
             )}
         </>

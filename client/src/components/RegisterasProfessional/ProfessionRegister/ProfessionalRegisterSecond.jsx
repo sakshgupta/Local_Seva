@@ -60,7 +60,7 @@ function ProfessionalRegisterSecond(props) {
                 toast.info("Redirecting you...");
                 console.log(data);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/handyman/dashboard");
                 }, 3000);
             } else {
                 console.error(`Failed with status code ${response.status}`);

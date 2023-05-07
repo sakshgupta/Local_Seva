@@ -34,6 +34,14 @@ const user_model = new mongoose.Schema(
             unique: true,
             lowercase: true,
         },
+        lat: {
+            type: String,
+            required: true,
+        },
+        long: {
+            type: String,
+            required: true,
+        },
         contactNumber: {
             type: String,
             required: true,
@@ -122,6 +130,7 @@ const handyman_model = new mongoose.Schema(
                 max: 5,
             },
         ],
+        usersSelected: [],
     },
     { timestamps: true }
 );
@@ -138,7 +147,11 @@ const notification_model = new mongoose.Schema(
             ref: "Handyman",
             required: true,
         },
-        message: {
+        lat: {
+            type: String,
+            required: true,
+        },
+        long: {
             type: String,
             required: true,
         },
