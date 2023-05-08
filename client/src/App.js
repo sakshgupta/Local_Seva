@@ -23,59 +23,47 @@ import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 import "./index.css";
 
 function App() {
-    return (
-        <>
-            {/* Navbar */}
-            <Routes>
-                <Route path="/" element={<Navbar />} />
-            </Routes>
-            {/* Rest Routes */}
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                {/* User Login and signup */}
-                <Route path="/user/login" element={<LogIn />} />
-                <Route path="/user/signup" element={<Signup />} />
-                <Route path="/user/signup/verify" element={<Otp />} />
-                {/* Handyman */}
-                <Route path="/handyman/dashboard" element={<Dashboard />} />
-                <Route
-                    path="/handyman/register"
-                    element={<RegisterasProfessional />}
-                />
-                <Route path="/handyman/login" element={<ProfessionalLogin />} />
-                <Route
-                    path="/handyman/signup"
-                    element={<ProfessionalRegister />}
-                />
-                <Route
-                    path="/handyman/signup/verify"
-                    element={<ProfessionalRegisterSecond />}
-                />
-                {/* Services */}
-                <Route path="/services/:serviceName" element={<Service />} />
-                <Route
-                    path="/services/serviceProvider"
-                    element={<ServiceProvider />}
-                />
-                {/* Billing and stuff */}
-                <Route path="/user/bookingsummary" element={<BookingDone />} />
-                <Route path="/handyman/workdone" element={<Completed />} />
-                <Route path="/handyman/paymentBill" element={<PaymentBill />} />
-                {/* Job Start Otp */}
-                <Route path="/handyman/jobstartotp" element={<Map />} />
-                {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
-            </Routes>
-            {/* Footer */}
-            <Routes>
-                <Route path="/" element={<Footer />} />
-            </Routes>
-            <ToastContainer
-                autoClose={5000}
-                theme="colored"
-                newestOnTop={true}
-            />
-        </>
-    );
+  return (
+    <>
+      {/* Navbar */}
+      <Routes>
+        <Route path="/" element={<Navbar />} />
+      </Routes>
+      {/* Rest Routes */}
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        {/* User Login and signup */}
+        <Route path="/user/login" element={<LogIn />} />
+        <Route path="/user/signup" element={<Signup />} />
+        <Route path="/user/signup/verify" element={<Otp />} />
+
+        {/* Handyman */}
+        <Route path="/handyman/dashboard" element={<Dashboard />} />
+        <Route path="/handyman/register" element={<RegisterasProfessional />} />
+        <Route path="/handyman/login" element={<ProfessionalLogin />} />
+        <Route path="/handyman/signup" element={<ProfessionalRegister />} />
+        <Route
+          path="/handyman/signup/verify"
+          element={<ProfessionalRegisterSecond />}
+        />
+        {/* Services */}
+        <Route path="/services/:serviceName" element={<Service />} />
+        <Route path="/services/serviceProvider" element={<ServiceProvider />} />
+        {/* Billing and stuff */}
+        <Route path="/user/bookingsummary" element={<BookingDone />} />
+        <Route path="/handyman/workdone" element={<Completed />} />
+        <Route path="/handyman/paymentBill" element={<PaymentBill />} />
+        {/* Job Start Otp */}
+        <Route path="/handyman/jobstartotp" element={<Map />} />
+        {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
+      </Routes>
+      {/* Footer */}
+      <Routes>
+        <Route path="/" element={<Footer />} />
+      </Routes>
+      <ToastContainer autoClose={5000} theme="colored" newestOnTop={true} />
+    </>
+  );
 }
 
 export default App;
