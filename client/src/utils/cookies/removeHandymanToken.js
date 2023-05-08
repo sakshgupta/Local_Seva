@@ -4,6 +4,6 @@ const cookies = new Cookies();
 
 export const removeHandymanToken = () => {
     cookies.remove("handyman_token", {
-        path: "/",
+        path: "/handyman",
     });
 };

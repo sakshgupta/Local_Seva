@@ -6,6 +6,7 @@ import "./Completed.css";
 import workdone from "./images/work_done.jpeg";
 
 function Completed() {
+    const navigate = useNavigate();
     const handyman_id = gethandymanToken();
     const location = useLocation();
 
@@ -30,9 +31,9 @@ function Completed() {
             const data = await response.json();
             if (response.status === 200) {
                 toast.success(data.msg);
-                // setTimeout(() => {
-                //     navigate(`/handyman/workdone?user_id=${user_id}`);
-                // }, 3000);
+                setTimeout(() => {
+                    navigate(`/handyman/dashboard`);
+                }, 3000);
             } else {
                 console.error(`Failed with status code ${response.status}`);
                 toast.error(data.msg);

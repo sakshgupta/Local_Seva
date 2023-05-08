@@ -6,6 +6,8 @@ import BookingDone from "./components/BookingDone/BookingDone";
 import Footer from "./components/Global Components/Footer/Footer";
 import Navbar from "./components/Global Components/Navbar/Navbar";
 import Homepage from "./components/Homepage/Homepage";
+import Completion from "./components/Payment/Completion";
+import Payment from "./components/Payment/Payment";
 import LogIn from "./components/Register/LogIn";
 import Otp from "./components/Register/Otp";
 import Signup from "./components/Register/Signup";
@@ -23,47 +25,63 @@ import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 import "./index.css";
 
 function App() {
-  return (
-    <>
-      {/* Navbar */}
-      <Routes>
-        <Route path="/" element={<Navbar />} />
-      </Routes>
-      {/* Rest Routes */}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        {/* User Login and signup */}
-        <Route path="/user/login" element={<LogIn />} />
-        <Route path="/user/signup" element={<Signup />} />
-        <Route path="/user/signup/verify" element={<Otp />} />
+    return (
+        <>
+            {/* Navbar */}
+            <Routes>
+                <Route path="/" element={<Navbar />} />
+            </Routes>
+            {/* Rest Routes */}
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                {/* User Login and signup */}
+                <Route path="/user/login" element={<LogIn />} />
+                <Route path="/user/signup" element={<Signup />} />
+                <Route path="/user/signup/verify" element={<Otp />} />
+                {/* Handyman */}
+                <Route path="/handyman/dashboard" element={<Dashboard />} />
+                <Route
+                    path="/handyman/register"
+                    element={<RegisterasProfessional />}
+                />
+                <Route path="/handyman/login" element={<ProfessionalLogin />} />
+                <Route
+                    path="/handyman/signup"
+                    element={<ProfessionalRegister />}
+                />
+                <Route
+                    path="/handyman/signup/verify"
+                    element={<ProfessionalRegisterSecond />}
+                />
+                {/* Services */}
+                <Route path="/services/:serviceName" element={<Service />} />
+                <Route
+                    path="/services/serviceProvider"
+                    element={<ServiceProvider />}
+                />
+                {/* Billing and stuff */}
+                <Route path="/user/bookingsummary" element={<BookingDone />} />
+                <Route path="/handyman/workdone" element={<Completed />} />
+                <Route path="/handyman/paymentBill" element={<PaymentBill />} />
+                {/* Job Start Otp */}
+                <Route path="/handyman/jobstartotp" element={<Map />} />
+                {/* Payment */}
+                <Route path="/user/payment" element={<Payment />} />
+                <Route path="/handyman/confirmation" element={<Completion />} />
 
-        {/* Handyman */}
-        <Route path="/handyman/dashboard" element={<Dashboard />} />
-        <Route path="/handyman/register" element={<RegisterasProfessional />} />
-        <Route path="/handyman/login" element={<ProfessionalLogin />} />
-        <Route path="/handyman/signup" element={<ProfessionalRegister />} />
-        <Route
-          path="/handyman/signup/verify"
-          element={<ProfessionalRegisterSecond />}
-        />
-        {/* Services */}
-        <Route path="/services/:serviceName" element={<Service />} />
-        <Route path="/services/serviceProvider" element={<ServiceProvider />} />
-        {/* Billing and stuff */}
-        <Route path="/user/bookingsummary" element={<BookingDone />} />
-        <Route path="/handyman/workdone" element={<Completed />} />
-        <Route path="/handyman/paymentBill" element={<PaymentBill />} />
-        {/* Job Start Otp */}
-        <Route path="/handyman/jobstartotp" element={<Map />} />
-        {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
-      </Routes>
-      {/* Footer */}
-      <Routes>
-        <Route path="/" element={<Footer />} />
-      </Routes>
-      <ToastContainer autoClose={5000} theme="colored" newestOnTop={true} />
-    </>
-  );
+                {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
+            </Routes>
+            {/* Footer */}
+            <Routes>
+                <Route path="/" element={<Footer />} />
+            </Routes>
+            <ToastContainer
+                autoClose={5000}
+                theme="colored"
+                newestOnTop={true}
+            />
+        </>
+    );
 }
 
 export default App;

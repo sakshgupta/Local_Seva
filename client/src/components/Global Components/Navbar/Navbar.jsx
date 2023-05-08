@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUserToken } from "./../../../utils/cookies/getUserToken";
+import { removeUserToken } from "./../../../utils/cookies/removeUserToken";
 import "./Navbar.css";
 
 function Navbar() {
@@ -19,6 +20,12 @@ function Navbar() {
 
     const handleToggleMenu = () => {
         setShowMobileMenu(!showMobileMenu);
+    };
+
+    // function to handle logout button click
+    const handleLogout = () => {
+        removeUserToken();
+        navigate("/user/login");
     };
 
     return (
@@ -55,6 +62,7 @@ function Navbar() {
                             <Link to="/user/login">
                                 <button>Login/Signup</button>
                             </Link>
+                            <button onClick={handleLogout}>Logout</button>
                         </div>
                         <div
                             className="mobile_menu_toggle"

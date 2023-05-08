@@ -1,0 +1,82 @@
+.container {
+    padding-top: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @media (min-width: 1024px) {
+        padding-top: 8px;
+    }
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.title span {
+    color: #5f57f7;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+.credentials {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.credentials-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.credentials-table {
+    position: relative;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+
+    @media (min-width: 1024px) {
+        width: 33.3333%;
+    }
+}
+
+.credentials-table thead th {
+    padding: 18px 24px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #4b5563;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.credentials-table tbody td {
+    padding: 18px 24px;
+    font-size: 1rem;
+    color: #4b5563;
+    vertical-align: middle;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.credentials-table tbody td:last-child {
+    cursor: pointer;
+}
+
+.credentials-table tbody td:hover {
+    background-color: #f9fafb;
+}
+
+.credentials-table tbody td:last-child:hover {
+    background-color: #e5e7eb;
+}
+
+.stripe-button {
+    display: flex;
+    justify-content: center;
+    width: max-content;
+}

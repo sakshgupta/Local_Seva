@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./BookingDone.css";
 import call from "./images/call.png";
@@ -8,6 +8,7 @@ import profilecircle from "./images/profilecircle.png";
 
 function BookingDone() {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const lat = new URLSearchParams(location.search).get("lat");
     const long = new URLSearchParams(location.search).get("long");
@@ -87,6 +88,11 @@ function BookingDone() {
 
     const estimatedTime = estimateTimeOfArrival(handymanData, lat, long);
 
+    const handlePaymentClick = (e) => {
+        e.preventDefault();
+        navigate(`/user/payment?total=${total}`);
+    };
+
     return (
         <div className="container">
             <div className="bookingdone_uppercontainer">
@@ -147,6 +153,11 @@ function BookingDone() {
                             <div className="payment_text">Total</div>
                             <div className="payment_amount">{total}</div>
                         </div>
+                    </div>
+                    <div className="payment_paynow">
+                        <button onClick={handlePaymentClick}>
+                            <span>Pay Now</span>
+                        </button>
                     </div>
                 </div>
             </div>
