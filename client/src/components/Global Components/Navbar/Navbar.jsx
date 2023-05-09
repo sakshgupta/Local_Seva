@@ -9,9 +9,10 @@ import "./Navbar.css";
 function Navbar() {
     const navigate = useNavigate();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const user_id = getUserToken();
+    const [loggedIn, setLoggedIn] = useState(!!getUserToken());
 
     useEffect(() => {
-        const user_id = getUserToken();
         if (user_id == undefined) {
             toast.error("You need to login first");
             navigate("/user/login");
@@ -25,6 +26,7 @@ function Navbar() {
     // function to handle logout button click
     const handleLogout = () => {
         removeUserToken();
+        setLoggedIn(false);
         navigate("/user/login");
     };
 
@@ -59,10 +61,13 @@ function Navbar() {
                             </ul>
                         </div>
                         <div className="signup_login_button">
-                            <Link to="/user/login">
-                                <button>Login/Signup</button>
-                            </Link>
-                            <button onClick={handleLogout}>Logout</button>
+                            {loggedIn ? (
+                                <button onClick={handleLogout}>Logout</button>
+                            ) : (
+                                <Link to="/user/login">
+                                    <button>Login/Signup</button>
+                                </Link>
+                            )}
                         </div>
                         <div
                             className="mobile_menu_toggle"
@@ -90,9 +95,17 @@ function Navbar() {
                                 <a href="#">Contact Us</a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <button>Login/Signup</button>
-                                </a>
+                                {loggedIn ? (
+                                    <Link to="/user/login">
+                                        <button onClick={handleLogout}>
+                                            Logout
+                                        </button>
+                                    </Link>
+                                ) : (
+                                    <Link to="/user/login">
+                                        <button>Login/Signup</button>
+                                    </Link>
+                                )}
                             </li>
                         </ul>
                     </div>
