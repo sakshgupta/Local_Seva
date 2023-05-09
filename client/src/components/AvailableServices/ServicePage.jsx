@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import availableServices from "../../utils/AvailableServices";
 import IndividualServices from "./IndividualServices";
 import "./ServicePage.css";
 
 function ServicePage() {
+    const [searchInput, setSearchInput] = useState("");
+
+    function handleSearchInputChange(event) {
+        setSearchInput(event.target.value);
+    }
+
     function servicesIndividual(serviceDetails) {
         return (
             <IndividualServices
@@ -16,22 +22,25 @@ function ServicePage() {
             />
         );
     }
-    console.log(availableServices);
+
+    const filteredServices = availableServices.filter((service) =>
+        service.serviceName.toLowerCase().includes(searchInput.toLowerCase())
+    );
 
     return (
         <div className="service_page_main">
             <div className="container">
                 <div className="services_provided_container">
-                    {/* <div className="services_provided_buttons">
-                    <div className="services_provided_duration">
-                        <button>Book Now</button>
-                      </div>
-                    </div> */}
                     <div className="services_search">
-                        <input type="text" placeholder="What do you need?" />
+                        <input
+                            type="text"
+                            placeholder="What do you need?"
+                            value={searchInput}
+                            onChange={handleSearchInputChange}
+                        />
                     </div>
                     <p>Available Services</p>
-                    {availableServices.map(servicesIndividual)}
+                    {filteredServices.map(servicesIndividual)}
                 </div>
             </div>
         </div>

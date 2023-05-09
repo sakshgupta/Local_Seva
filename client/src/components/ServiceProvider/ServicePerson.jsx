@@ -8,9 +8,9 @@ function ServicePerson({
     handyman_id,
     name,
     address,
-    experience,
-    jobsCompleted,
-    imageSrc,
+    createdAt,
+    usersSelected,
+    profile,
 }) {
     const location = useLocation();
     const user_id = getUserToken();
@@ -18,6 +18,18 @@ function ServicePerson({
     const lat = new URLSearchParams(location.search).get("lat");
     const long = new URLSearchParams(location.search).get("long");
     const cost = new URLSearchParams(location.search).get("cost");
+
+    const createdAtDate = new Date(createdAt);
+
+    // Calculate the number of days since the handyman joined the platform
+    const today = new Date();
+    const diffTime = today.getTime() - createdAtDate.getTime();
+    const diffDays = Math.floor(diffTime / (1000 * 3600 * 24));
+
+    // Set the memberSince variable to the number of days since the handyman joined the platform
+    const memberSince = `${diffDays} days`;
+
+    const jobsCompleted = usersSelected.length;
 
     const [isLoading, setIsLoading] = useState(false);
     const [isAccepted, setIsAccepted] = useState(false);
@@ -80,16 +92,16 @@ function ServicePerson({
         <div className="servicePerson_main">
             <div className="servicePerson_content">
                 <div className="servicePerson_image">
-                    <img src={sampleWorker} alt="" />
+                    <img src={profile} alt="" />
                 </div>
                 <div className="servicePerson_info">
                     <div className="servicePerson_name">{name}</div>
                     <div className="servicePerson_address">{address}</div>
                     <div className="servicePerson_experience">
-                        {experience} years of experience
+                        Member for {memberSince}
                     </div>
                     <div className="servicePerson_jobsDone">
-                        {jobsCompleted} jobs completed
+                        Completed {jobsCompleted} jobs
                     </div>
                 </div>
             </div>

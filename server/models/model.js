@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { url } = require("../utils/cloudinary");
 
 const Schema = mongoose.Schema;
 
@@ -104,13 +105,11 @@ const handyman_model = new mongoose.Schema(
         },
         aadharFront: {
             type: String,
-            default:
-                "https://eventplanning24x7.files.wordpress.com/2018/04/events.png",
+            default: "https://i.ibb.co/Vwbpc7d/aadhar-front.jpg",
         },
         aadharBack: {
             type: String,
-            default:
-                "https://eventplanning24x7.files.wordpress.com/2018/04/events.png",
+            default: "https://i.ibb.co/xhWcnLd/aadhar-back.jpg",
         },
         lat: {
             type: String,
@@ -123,13 +122,11 @@ const handyman_model = new mongoose.Schema(
         services: {
             type: String,
         },
-        ratings: [
-            {
-                type: Number,
-                min: 0,
-                max: 5,
-            },
-        ],
+        profile: {
+            type: String,
+            default:
+                "https://cdn0.iconfinder.com/data/icons/construction-workers-2/66/25-1024.png",
+        },
         usersSelected: [],
     },
     { timestamps: true }

@@ -83,6 +83,7 @@ const handymanVerifySignup = async (req, res) => {
         aadharFront: AadharFront,
         aadharBack: AadharBack,
         services: Services,
+        profile: Profile,
         lat: Lat,
         long: Long,
     } = req.body;
@@ -119,7 +120,7 @@ const handymanVerifySignup = async (req, res) => {
                     lat: Lat,
                     long: Long,
                     services: Services,
-                    ratings: [],
+                    profile: Profile,
                     usersSelected: [],
                 });
 

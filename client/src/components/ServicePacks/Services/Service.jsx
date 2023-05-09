@@ -56,7 +56,7 @@ function Service() {
                         <div className="servicePacks_buttons">
                             {selected ? (
                                 <Link
-                                    to={`/services/serviceProvider?lat=${location.coordinates.lat}&long=${location.coordinates.lng}&cost=${selected}`}
+                                    to={`/services/serviceProvider?service=${serviceName}&lat=${location.coordinates.lat}&long=${location.coordinates.lng}&cost=${selected}`}
                                     style={{ color: "inherit" }}
                                 >
                                     <button>Continue</button>

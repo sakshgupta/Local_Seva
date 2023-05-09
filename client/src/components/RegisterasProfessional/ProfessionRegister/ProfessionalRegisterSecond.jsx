@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import availableServices from "../../../utils/AvailableServices";
 import Dropdown from "../../../utils/DropDown";
 import { setHandymanToken } from "../../../utils/cookies/setHandymanToken";
-import "./ProfessionalRegister.css";
 import useGeoLocation from "../../../utils/useGeoLocation";
+import "./ProfessionalRegister.css";
 
 function ProfessionalRegisterSecond(props) {
     const navigate = useNavigate();
@@ -18,8 +19,9 @@ function ProfessionalRegisterSecond(props) {
     const [aadharFront, setAadharFront] = useState("");
     const [aadharBack, setAadharBack] = useState("");
     const [address, setAddress] = useState("");
+    const [profile, setProfile] = useState("");
 
-    const options = ["Maid", "Carpenter", "Servant"];
+    const options = availableServices.map((service) => service.serviceName);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +38,7 @@ function ProfessionalRegisterSecond(props) {
             address: address,
             lat: location.coordinates.lat,
             long: location.coordinates.lng,
+            profile: profile != "" ? profile : undefined,
         };
         console.log(data);
 
@@ -161,6 +164,20 @@ function ProfessionalRegisterSecond(props) {
                         </div>
                         <div className="signup_form_input">
                             <input
+                                type="string"
+                                placeholder="Profile URL"
+                                onChange={(e) => setProfile(e.target.value)}
+                            />
+                        </div>
+                        <div className="signup_form_input">
+                            <input
+                                type="text"
+                                placeholder="Address"
+                                onChange={(e) => setAddress(e.target.value)}
+                            />
+                        </div>
+                        <div className="signup_form_input">
+                            <input
                                 type="number"
                                 placeholder="Aadhar Number"
                                 onChange={(e) =>
@@ -184,13 +201,6 @@ function ProfessionalRegisterSecond(props) {
                                 multiple={false}
                                 accept="image/*"
                                 // onChange={handleAadhaarBackImageUpload}
-                            />
-                        </div>
-                        <div className="signup_form_input">
-                            <input
-                                type="text"
-                                placeholder="Address"
-                                onChange={(e) => setAddress(e.target.value)}
                             />
                         </div>
                         <div className="signup_form_button">

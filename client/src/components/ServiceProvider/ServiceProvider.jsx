@@ -6,6 +6,7 @@ import "./ServiceProvider.css";
 function ServiceProvider() {
     const location = useLocation();
 
+    const serviceSelected = new URLSearchParams(location.search).get("service");
     const [handymen, setHandymen] = useState(null);
     const [sortedHandymen, setSortedHandymen] = useState(null);
     const [lat, setLat] = useState(null);
@@ -44,19 +45,22 @@ function ServiceProvider() {
     }
 
     useEffect(() => {
+        // assuming serviceSelected is a string containing the selected service
+        const filteredHandymen = handymen?.filter(
+            (handyman) => handyman.services.toLowerCase() === serviceSelected
+        );
         // Fetch handymen data from the backend
         setLat(new URLSearchParams(location.search).get("lat"));
         setLong(new URLSearchParams(location.search).get("long"));
 
         // Sort handymen based on their distance from the user
-        const sortedHandymen = handymen?.sort((a, b) => {
+        const sortedHandymen = filteredHandymen?.sort((a, b) => {
             const distanceA = calculateDistance(lat, long, a.lat, a.long);
             const distanceB = calculateDistance(lat, long, b.lat, b.long);
             return distanceA - distanceB;
         });
         setSortedHandymen(sortedHandymen);
         console.log(sortedHandymen);
-        
     }, [handymen, lat, long]);
 
     return (
