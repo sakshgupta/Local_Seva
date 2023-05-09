@@ -107,7 +107,7 @@ function ServicePerson({
             </div>
             <div className="servicePerson_button">
                 {isLoading ? (
-                    <div>Loading...</div>
+                    <div>Wating for handyman to respond...</div>
                 ) : isAccepted ? (
                     <Link
                         to={`/user/bookingsummary?lat=${lat}&long=${long}&cost=${cost}&handyman_id=${handyman_id}`}

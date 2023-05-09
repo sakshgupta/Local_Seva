@@ -50,13 +50,17 @@ function Navbar() {
                                     <Link to="/">Home</Link>
                                 </li>
                                 <li>
-                                    <Link to="/">About Us</Link>
+                                    <Link to="/services/servicePage">
+                                        Services
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link to="/">Services</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Contact Us</Link>
+                                    <Link
+                                        to="mailto:sakshamgupta.dev@gmail.com"
+                                        target="_blank"
+                                    >
+                                        Contact Us
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -83,16 +87,18 @@ function Navbar() {
                     >
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <a href="#">About Us</a>
+                                <Link to="/services/servicePage">Services</Link>
                             </li>
                             <li>
-                                <a href="#">Services</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact Us</a>
+                                <Link
+                                    to="mailto:sakshamgupta.dev@gmail.com"
+                                    target="_blank"
+                                >
+                                    Contact Us
+                                </Link>
                             </li>
                             <li>
                                 {loggedIn ? (

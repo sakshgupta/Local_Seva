@@ -17,7 +17,7 @@ function Service() {
 
     const location = useGeoLocation(); //getting current location of the user
 
-    const options = ["150", "250", "350"];
+    const options = ["50", "120", "200"];
 
     return (
         <div className="servicePacks_outer">
