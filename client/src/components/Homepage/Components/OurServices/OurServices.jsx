@@ -26,9 +26,7 @@ function OurServices() {
                 <div className="ourServices_services">
                     {services.map((service, index) => (
                         <div className="services_box" key={index}>
-                            <Link
-                                to={`/services/${service.name.toLowerCase()}`}
-                            >
+                            <Link to={`/services/servicePage`}>
                                 <div className="services_image">
                                     <img src={service.image} alt="" />
                                 </div>

@@ -59,6 +59,8 @@ function App() {
                     path="/services/serviceProvider"
                     element={<ServiceProvider />}
                 />
+                <Route path="/services/servicePage" element={<ServicePage />}
+                />
                 {/* Billing and stuff */}
                 <Route path="/user/bookingsummary" element={<BookingDone />} />
                 <Route path="/handyman/workdone" element={<Completed />} />
