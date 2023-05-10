@@ -23,6 +23,7 @@ import PaymentBill from "./components/RegisterasProfessional/ServiceTime/Payment
 import Service from "./components/ServicePacks/Services/Service";
 import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 import "./index.css";
+import HandymanProfile from "./components/RegisterasProfessional/Dashboard/HandymanProfile";
 
 function App() {
     return (
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/user/signup/verify" element={<Otp />} />
                 {/* Handyman */}
                 <Route path="/handyman/dashboard" element={<Dashboard />} />
+                <Route path="/handyman/profile" element={<HandymanProfile />} />
                 <Route
                     path="/handyman/register"
                     element={<RegisterasProfessional />}

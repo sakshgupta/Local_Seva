@@ -9,9 +9,9 @@ import "./DashboardNavbar.css";
 function DashboardNavbar() {
     const navigate = useNavigate();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const handyman_id = gethandymanToken();
 
     useEffect(() => {
-        const handyman_id = gethandymanToken();
         if (handyman_id == undefined) {
             toast.error("You need to login first");
             navigate("/handyman/login");
@@ -45,11 +45,15 @@ function DashboardNavbar() {
                         <div className="menu_link">
                             <ul>
                                 <li>
-                                    <Link to="/handyman/profile">Profile</Link>
+                                    <Link
+                                        to={`/handyman/profile?handyman_id=${handyman_id}`}
+                                    >
+                                        Profile
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link to="/handyman/services">
-                                        Services
+                                    <Link to="/handyman/dashboard">
+                                        Dashboard
                                     </Link>
                                 </li>
                             </ul>
