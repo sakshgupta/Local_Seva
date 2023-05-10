@@ -48,7 +48,7 @@ function Payment() {
                 }
             );
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             if (data.status === "success") {
                 alert("Payment Successful");
                 navigate("/");

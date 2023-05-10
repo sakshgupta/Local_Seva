@@ -66,13 +66,13 @@ function ProfessionalOTP(props) {
         // If the OTP is correct, redirect to the dashboard
         try {
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             if (response.status === 200) {
                 toast.success(data.msg);
-                console.log(data);
+                // console.log(data);
                 // setUserToken(data.user_id); //set up cookie
                 toast.info("Redirecting you...");
-                console.log(data);
+                // console.log(data);
                 setTimeout(() => {
                     navigate("/");
                 }, 3000);

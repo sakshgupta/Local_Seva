@@ -68,12 +68,12 @@ function Otp(props) {
         // If the OTP is correct, redirect to the dashboard
         try {
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             if (response.status === 200) {
                 toast.success(data.msg);
                 toast.info("Redirecting you...");
                 setUserToken(data.user_id); //set up cookie
-                console.log(data);
+                // console.log(data);
                 setTimeout(() => {
                     navigate("/");
                 }, 3000);

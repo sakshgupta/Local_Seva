@@ -18,7 +18,7 @@ function PopUp(props) {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 navigate(
                     `/handyman/jobstartotp?user_id=${notificationData[0].user_id}`
                 );
@@ -40,7 +40,7 @@ function PopUp(props) {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => {
                 console.error(error);

@@ -41,7 +41,7 @@ function Dashboard() {
                             firstNotification.status === "rejected"
                         ) {
                             setShowNotification(false);
-                            clearInterval(intervalId);
+                            // clearInterval(intervalId);
                         }
                     } else {
                         setShowNotification(false);

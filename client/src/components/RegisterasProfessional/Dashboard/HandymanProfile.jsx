@@ -24,7 +24,7 @@ function HandymanProfile() {
             );
             try {
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
 
                 if (response.status == 200) {
                     setHandymanData(data);

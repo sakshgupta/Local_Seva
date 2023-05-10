@@ -60,7 +60,7 @@ function ServiceProvider() {
             return distanceA - distanceB;
         });
         setSortedHandymen(sortedHandymen);
-        console.log(sortedHandymen);
+        // console.log(sortedHandymen);
     }, [handymen, lat, long]);
 
     return (

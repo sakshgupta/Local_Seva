@@ -68,9 +68,9 @@ function ServicePerson({
                     )
                         .then((response) => response.json())
                         .then((data) => {
-                            console.log("hey" + data[0].status);
+                            // console.log("hey" + data[0].status);
                             if (data[0].status === "accepted") {
-                                console.log("in" + data[0].status);
+                                // console.log("in" + data[0].status);
                                 setIsAccepted(true);
                                 setIsLoading(false);
                                 clearInterval(interval);
