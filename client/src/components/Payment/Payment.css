@@ -1,11 +1,22 @@
-.container {
-    padding-top: 20px;
-    padding-left: 24px;
-    padding-right: 24px;
+.payment-texts{
+    font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #1a1a1a;
+}
 
-    @media (min-width: 1024px) {
-        padding-top: 8px;
-    }
+.payment-texts-2{
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    color: #1a1a1a; 
+    margin-top: 20px;
 }
 
 .title {
@@ -79,4 +90,46 @@
     display: flex;
     justify-content: center;
     width: max-content;
+}
+
+.table-main{
+    margin-top: 50px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1a1a1a;
+}
+@media only screen and (max-width: 768px) {
+    .payment-texts{
+     
+      font-size: 18px;
+      line-height: 24px;
+    
+    }
+    
+    .payment-texts-2{
+        font-size: 24px;
+        line-height: 30px;
+    }
+    
+}
+
+@media only screen and (max-width: 768px) {
+    .payment-texts{
+     
+      font-size: 14px;
+      line-height: 20px;
+    
+    }
+    
+    .payment-texts-2{
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .table-main{
+        margin-top: 20px !important;
+    }
+    
 }

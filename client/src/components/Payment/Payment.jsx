@@ -61,10 +61,10 @@ function Payment() {
     };
 
     return (
-        <div className="pt-20 lg:pt-8">
+        <div className="container pt-20 lg:pt-8">
             <div className="flex flex-col m-6 ">
-                <div className="text-3xl">
-                    Pay using{" "}
+                <div className="payment-texts text-3xl">
+                    Pay using
                     <span
                         className="text-4xl font-bold"
                         style={{ color: "#5F57F7", fontFamily: "Puritan" }}
@@ -72,16 +72,16 @@ function Payment() {
                         stripe
                     </span>
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="payment-texts text-sm text-gray-400">
                     Payment is currently in Test Mode
                 </div>
 
-                <div className="m-6 flex flex-col ">
+                <div className="payment-texts-2 m-6 flex flex-col ">
                     <div>Use the following test credentials: </div>
 
                     <div className="relative mb-6 overflow-x-auto shadow-md sm:rounded-lg w-full lg:w-1/3 ">
-                        <table className="w-full text-sm text-left my-2">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                        <table className="table-main w-full text-sm text-left my-2">
+                            <thead className="payment-texts text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         Field
