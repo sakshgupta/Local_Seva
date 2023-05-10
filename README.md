@@ -1,3 +1,6 @@
+<center>
+  <img src="client/public/logo.png">
+</center>
 <h1> Local Seva</h1>
 Welcome to Local Seva, your one-stop platform for local services. Whether you need a handyman, a plumber, a maid, or any other service, Local Seva connects you with trusted professionals in your area. With our easy-to-use interface, you can quickly find and book the services you need, making your life easier and more convenient.
 <br>
