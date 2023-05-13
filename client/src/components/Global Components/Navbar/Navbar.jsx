@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { getUserToken } from "./../../../utils/cookies/getUserToken";
 import { removeUserToken } from "./../../../utils/cookies/removeUserToken";
 import "./Navbar.css";
@@ -9,15 +8,25 @@ import "./Navbar.css";
 function Navbar() {
     const navigate = useNavigate();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const user_id = getUserToken();
-    const [loggedIn, setLoggedIn] = useState(!!getUserToken());
 
+    // just starting the server once
     useEffect(() => {
-        if (user_id == undefined) {
-            toast.error("You need to login first");
-            navigate("/user/login");
-        }
+        const fetchOnce = async () => {
+            const response = await fetch(
+                `${process.env.REACT_APP_BACKEND_API}/api/handyman/getallhandyman`
+            );
+            try {
+                const data = await response.json();
+                console.log("Server Started");
+            } catch (error) {
+                console.error("Invalid JSON string:", error.message);
+            }
+        };
+
+        fetchOnce();
     }, []);
+
+    const [loggedIn, setLoggedIn] = useState(!!getUserToken());
 
     const handleToggleMenu = () => {
         setShowMobileMenu(!showMobileMenu);

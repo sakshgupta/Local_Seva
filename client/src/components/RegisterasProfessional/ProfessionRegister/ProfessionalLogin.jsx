@@ -5,9 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Cookies from "universal-cookie";
 import { setHandymanToken } from "../../../utils/cookies/setHandymanToken";
 import "./ProfessionalLogin.css";
-import apple_logo from "./images/apple_logo.png";
-import facebook_logo from "./images/facebook_logo.png";
-import google_logo from "./images/google_logo.png";
+import back from "./images/back.png";
 
 function ProfessionalLogin() {
     const navigate = useNavigate();
@@ -69,6 +67,11 @@ function ProfessionalLogin() {
 
     return (
         <div className="professional_login_main_container">
+            <img
+                className="professional_login_main_back"
+                src={back}
+                onClick={() => navigate("/handyman/register")}
+            />
             <div className="container login_form">
                 <form onSubmit={handleSubmit}>
                     <div className="login_form_heading">Professional Login</div>
@@ -99,37 +102,6 @@ function ProfessionalLogin() {
                             }}
                         >
                             Test
-                        </button>
-                    </div>
-                    <div className="login_form_or">
-                        <div className="login_form_line"></div>
-                        <div className="login_form_option">or</div>
-                        <div className="login_form_line"></div>
-                    </div>
-                    <div className="login_form_social_connect">
-                        <button className="login_form_socials">
-                            <div className="login_form_social_image">
-                                <img src={google_logo} alt="" />
-                            </div>
-                            <div className="login_form_social_text">
-                                Continue with Google
-                            </div>
-                        </button>
-                        <button className="login_form_socials">
-                            <div className="login_form_social_image">
-                                <img src={apple_logo} alt="" />
-                            </div>
-                            <div className="login_form_social_text">
-                                Continue with Apple
-                            </div>
-                        </button>
-                        <button className="login_form_socials">
-                            <div className="login_form_social_image">
-                                <img src={facebook_logo} alt="" />
-                            </div>
-                            <div className="login_form_social_text">
-                                Continue with Facebook
-                            </div>
                         </button>
                     </div>
                     <div className="login_form_switch">

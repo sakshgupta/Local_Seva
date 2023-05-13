@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ServicePage from "./components/AvailableServices/ServicePage";
 import BookingDone from "./components/BookingDone/BookingDone";
@@ -12,8 +12,8 @@ import LogIn from "./components/Register/LogIn";
 import Otp from "./components/Register/Otp";
 import Signup from "./components/Register/Signup";
 import Dashboard from "./components/RegisterasProfessional/Dashboard/Dashboard";
+import HandymanProfile from "./components/RegisterasProfessional/Dashboard/HandymanProfile";
 import ProfessionalLogin from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalLogin";
-import ProfessionalOTP from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalOTP";
 import ProfessionalRegister from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalRegister";
 import ProfessionalRegisterSecond from "./components/RegisterasProfessional/ProfessionRegister/ProfessionalRegisterSecond";
 import RegisterasProfessional from "./components/RegisterasProfessional/RegisterasProfessional";
@@ -23,7 +23,6 @@ import PaymentBill from "./components/RegisterasProfessional/ServiceTime/Payment
 import Service from "./components/ServicePacks/Services/Service";
 import ServiceProvider from "./components/ServiceProvider/ServiceProvider";
 import "./index.css";
-import HandymanProfile from "./components/RegisterasProfessional/Dashboard/HandymanProfile";
 
 function App() {
     return (
@@ -61,8 +60,7 @@ function App() {
                     path="/services/serviceProvider"
                     element={<ServiceProvider />}
                 />
-                <Route path="/services/servicePage" element={<ServicePage />}
-                />
+                <Route path="/services/servicePage" element={<ServicePage />} />
                 {/* Billing and stuff */}
                 <Route path="/user/bookingsummary" element={<BookingDone />} />
                 <Route path="/handyman/workdone" element={<Completed />} />

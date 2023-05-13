@@ -15,7 +15,9 @@ function Footer() {
         </div>
         <div className="footer_contents">
           <div className="footer_column">
-            <div className="footer_column_first_heading">PYL</div>
+            <div className="footer_column_first_heading_image">
+              <img src="/logo.png" />
+            </div>
             <div className="footer_column_first_image_container">
               <div className="footer_column_images">
                 <a href="">

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Map, { Marker } from "react-map-gl";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
-console.log(TOKEN);
+// console.log(TOKEN);
 
 function Mapbox(props) {
     const [viewPort, setViewPort] = useState({

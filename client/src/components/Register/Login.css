@@ -7,6 +7,12 @@
     height: 100vh;
 }
 
+.login_main_back {
+    height: 50px;
+    cursor: pointer;
+    margin: 10px;
+}
+
 .login_form {
     display: flex;
     justify-content: center;

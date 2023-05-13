@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import availableServices from "../../utils/AvailableServices";
+import { getUserToken } from "../../utils/cookies/getUserToken";
 import IndividualServices from "./IndividualServices";
 import "./ServicePage.css";
 
 function ServicePage() {
+    const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("");
+    const user_id = getUserToken();
+
+    useEffect(() => {
+        if (user_id == undefined) {
+            toast.error("You need to login first");
+            navigate("/user/login");
+        }
+    }, []);
 
     function handleSearchInputChange(event) {
         setSearchInput(event.target.value);

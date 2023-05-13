@@ -7,6 +7,7 @@ import Dropdown from "../../../utils/DropDown";
 import { setHandymanToken } from "../../../utils/cookies/setHandymanToken";
 import useGeoLocation from "../../../utils/useGeoLocation";
 import "./ProfessionalRegister.css";
+import back from "./images/back.png";
 
 function ProfessionalRegisterSecond(props) {
     const navigate = useNavigate();
@@ -143,6 +144,11 @@ function ProfessionalRegisterSecond(props) {
     return (
         <div>
             <div className="professional_signup_main_container">
+                <img
+                    className="professional_signup_main_back"
+                    src={back}
+                    onClick={() => navigate("/handyman/register")}
+                />
                 <div className="container signup_form">
                     <form onSubmit={handleSubmit}>
                         <div className="signup_form_heading">
