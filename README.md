@@ -88,7 +88,7 @@ Our team consists of:
   </a>.
   </li>
   <li><strong>Amaan Khan:</strong>
-  Connect with Saksham on 
+  Connect with Amaan on 
   <a href="https://www.linkedin.com/in/amaankhanak/">
   LinkedIn
   </a> and 
