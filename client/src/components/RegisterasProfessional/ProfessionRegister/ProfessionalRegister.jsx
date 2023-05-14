@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Cookies from "universal-cookie";
 import "./ProfessionalRegister.css";
 import ProfessionalRegisterSecond from "./ProfessionalRegisterSecond";
@@ -83,7 +82,7 @@ function ProfessionalRegister() {
                             <div className="signup_form_heading">
                                 Create Account
                                 <br />
-                                <span>Create your professional account</span>
+                                <span>Create your handyman account</span>
                             </div>
                             <div className="signup_form_input">
                                 <input

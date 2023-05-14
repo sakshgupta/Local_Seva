@@ -159,8 +159,8 @@ const notification_model = new mongoose.Schema(
         },
         expireAt: {
             type: Date,
-            default: Date.now,
-            index: { expires: "120s" },
+            default: () => new Date(Date.now() + 20000), // Set expireAt to current date + 20 seconds
+            index: { expireAfterSeconds: 20 }, // Set index to 0 since it will be calculated dynamically
         },
     },
     { timestamps: true }

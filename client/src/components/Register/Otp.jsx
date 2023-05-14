@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { setUserToken } from "./../../utils/cookies/setUserToken";
 import "./Otp.css";
 
@@ -156,11 +155,6 @@ function Otp(props) {
                     </div>
                 </form>
             </div>
-            <ToastContainer
-                autoClose={5000}
-                theme="colored"
-                newestOnTop={true}
-            />
         </div>
     );
 }

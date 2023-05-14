@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import availableServices from "../../../utils/AvailableServices";
 import Dropdown from "../../../utils/DropDown";
 import { setHandymanToken } from "../../../utils/cookies/setHandymanToken";
@@ -220,11 +219,6 @@ function ProfessionalRegisterSecond(props) {
                     </form>
                 </div>
             </div>
-            <ToastContainer
-                autoClose={5000}
-                theme="colored"
-                newestOnTop={true}
-            />
         </div>
     );
 }

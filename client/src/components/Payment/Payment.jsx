@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
-// import CheckoutForm from "./CheckoutForm";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Payment.css";
 

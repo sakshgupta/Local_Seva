@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./BookingDone.css";
 import call from "./images/call.png";
@@ -18,6 +18,7 @@ function BookingDone() {
     const handyman_id = new URLSearchParams(location.search).get("handyman_id");
 
     const [handymanData, setHandymanData] = useState("");
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const fetchHandymanDetails = async () => {
@@ -93,14 +94,13 @@ function BookingDone() {
         navigate(`/user/payment?total=${total}`);
     };
 
+    const handleCopyToClipboard = () => {
+        navigator.clipboard.writeText(handymanData?.phone);
+        setCopied(true);
+    };
+
     return (
         <div className="container">
-            <div className="bookingdone_uppercontainer">
-                <div className="bookingdone_heading">Handyman at HOME</div>
-                <div className="cancel_booking">
-                    <button>Cancel Booking</button>
-                </div>
-            </div>
             <div className="booking_middle_container">
                 <div className="booking_summary">
                     <div className="booking_summary_heading">
@@ -161,22 +161,21 @@ function BookingDone() {
                     </div>
                 </div>
             </div>
-            <div className="booking_third_container">
-                <div className="bookingend_heading">Service Checklist</div>
-                <div className="bookingend_text">
-                    See what all services you can take from our checklist
-                </div>
-            </div>
             <div className="booking_end_container">
                 <div className="booking_end_text">
                     <div className="bookingend_heading">Booking Confirmed</div>
                     <div className="bookingend_text">
-                        Call us in case you face any issue in our service
+                        Call the handyman in case you face any issue
                     </div>
                 </div>
                 <div className="booking_end_contact">
-                    <button>
-                        <img src={call} alt="" /> <span>011-5522 3322 11</span>
+                    <button onClick={handleCopyToClipboard}>
+                        <img src={call} alt="" />
+                        <span>
+                            {"+91"}
+                            {handymanData?.phone}
+                        </span>
+                        {copied && <span> Copied!</span>}
                     </button>
                 </div>
             </div>

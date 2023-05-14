@@ -4,7 +4,6 @@ import PopUp from "../PopUp/PopUp";
 import "../PopUp/PopUp.css";
 import { gethandymanToken } from "./../../../utils/cookies/getHandymanToken";
 import DashboardNavbar from "./DashboardNavbar";
-import HandymanProfile from "./HandymanProfile";
 import ServiceHistory from "./Service/ServiceHistory";
 
 function Dashboard() {
@@ -58,7 +57,6 @@ function Dashboard() {
                     console.error("Invalid JSON string:", error.message);
                 }
             };
-            setShowNotification(false);
             getNotifications();
         }, 5000); // check for notifications every 5 seconds
 

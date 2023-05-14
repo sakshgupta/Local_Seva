@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getUserToken } from "./../../utils/cookies/getUserToken";
 import "./ServiceProvider.css";
-import sampleWorker from "./images/sampleWorker.png";
 
 function ServicePerson({
     handyman_id,
@@ -33,9 +32,11 @@ function ServicePerson({
 
     const [isLoading, setIsLoading] = useState(false);
     const [isAccepted, setIsAccepted] = useState(false);
+    const [showCountdown, setShowCountdown] = useState(false);
 
     const handleSelect = () => {
         setIsLoading(true);
+        setShowCountdown(true);
         fetch(`${process.env.REACT_APP_BACKEND_API}/api/createnotification`, {
             method: "POST",
             headers: {
@@ -117,7 +118,13 @@ function ServicePerson({
                         </button>
                     </Link>
                 ) : (
-                    <button onClick={handleSelect}>Select</button>
+                    <>
+                        {showCountdown ? (
+                            <button disabled>Request Rejected</button>
+                        ) : (
+                            <button onClick={handleSelect}>Select</button>
+                        )}
+                    </>
                 )}
             </div>
         </div>

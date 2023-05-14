@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Cookies from "universal-cookie";
-import Dropdown from "../../utils/DropDown";
 import { setUserToken } from "../../utils/cookies/setUserToken";
 import useGeoLocation from "../../utils/useGeoLocation";
 import Otp from "./Otp";

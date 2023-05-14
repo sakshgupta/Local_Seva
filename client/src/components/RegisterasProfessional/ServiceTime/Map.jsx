@@ -120,7 +120,7 @@ function Map() {
                 <div className="service_otp">
                     <form onSubmit={handleSubmit}>
                         <div className="service_otp_heading">
-                            Enter the 4-digit code sent to customer
+                            Enter the 6-digit job start code sent to the user
                             <p>(Upon reaching the destination)</p>
                         </div>
                         <div className="service_otp_otp">

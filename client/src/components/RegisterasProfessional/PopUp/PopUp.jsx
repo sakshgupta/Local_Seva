@@ -51,7 +51,7 @@ function PopUp(props) {
         <>
             <div className="popup_inside">
                 <div className="popup_heading">
-                    Service requested from 1km away
+                    Your service is requested
                 </div>
                 <div className="popup_button">
                     <div className="popup_accept">

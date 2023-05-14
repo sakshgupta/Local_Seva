@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Cookies from "universal-cookie";
 import { setHandymanToken } from "../../../utils/cookies/setHandymanToken";
 import "./ProfessionalLogin.css";
@@ -74,7 +73,7 @@ function ProfessionalLogin() {
             />
             <div className="container login_form">
                 <form onSubmit={handleSubmit}>
-                    <div className="login_form_heading">Professional Login</div>
+                    <div className="login_form_heading">Handyman Login</div>
                     <div className="login_form_input">
                         <input
                             type="email"
@@ -112,11 +111,6 @@ function ProfessionalLogin() {
                     </div>
                 </form>
             </div>
-            <ToastContainer
-                autoClose={5000}
-                theme="colored"
-                newestOnTop={true}
-            />
         </div>
     );
 }

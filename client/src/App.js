@@ -6,7 +6,6 @@ import BookingDone from "./components/BookingDone/BookingDone";
 import Footer from "./components/Global Components/Footer/Footer";
 import Navbar from "./components/Global Components/Navbar/Navbar";
 import Homepage from "./components/Homepage/Homepage";
-import Completion from "./components/Payment/Completion";
 import Payment from "./components/Payment/Payment";
 import LogIn from "./components/Register/LogIn";
 import Otp from "./components/Register/Otp";
@@ -69,7 +68,6 @@ function App() {
                 <Route path="/handyman/jobstartotp" element={<Map />} />
                 {/* Payment */}
                 <Route path="/user/payment" element={<Payment />} />
-                <Route path="/handyman/confirmation" element={<Completion />} />
 
                 {/* <Route path="/handyman/verify" element={<ProfessionalOTP />} /> */}
             </Routes>

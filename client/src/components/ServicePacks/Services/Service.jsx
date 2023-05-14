@@ -1,12 +1,9 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import "../ServicePacks.css";
-
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import DropDown from "../../../utils/DropDown";
 import Map from "../../../utils/Map";
 import useGeoLocation from "../../../utils/useGeoLocation";
+import "../ServicePacks.css";
 import Services_Navbar from "./Services_Navbar";
 
 function Service() {

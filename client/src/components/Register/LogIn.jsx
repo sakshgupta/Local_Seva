@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Cookies from "universal-cookie";
 import { setUserToken } from "./../../utils/cookies/setUserToken";
 import "./Login.css";
@@ -111,11 +110,6 @@ function LogIn() {
                     </div>
                 </form>
             </div>
-            <ToastContainer
-                autoClose={5000}
-                theme="colored"
-                newestOnTop={true}
-            />
         </div>
     );
 }
